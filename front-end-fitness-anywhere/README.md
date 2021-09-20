@@ -30,7 +30,7 @@ The application MVP are the following
 
 [ ] 7. Authenticated `user` can reserve a spot in a `class` with available seats open, and can reschedule or cancel their current `reservation` from the mobile app.
 
-## Single Page Composition
+## Pages and Components
 
 The application is composed of the following pages:
  * `pageHome` - "/" (for the public viewing)
@@ -59,6 +59,7 @@ These are the components used to composite a page.
     * `taskReserveClass.js` - the interactive portal for a student to reserve or un-reserve a class
     * `userOnBoarding.js` - the interactive portal for a brand new user
 
+## Each Page Composition
 ### *pageHome* - "/"
 
     This page is composed of these components : `CompHeader`, `CompFooter`.
