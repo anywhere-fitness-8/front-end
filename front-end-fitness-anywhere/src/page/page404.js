@@ -12,7 +12,6 @@ const Container = styled.div`
 const Header = styled.header`
   height: 5%;
   width: 100%;
-  border: solid 1px yellow;
 `;
 const Footer = styled.footer`
   height: 10%;
@@ -21,18 +20,15 @@ const Footer = styled.footer`
 const Main = styled.main`
   height: 89%;
   width: 100%;
-  border: solid 1px red;
-  margin: 0;
-  padding: 0;
 `;
-function PageHome(props) {
+function Page404(props) {
   return (
     <Container>
       <Header>
         <CompHeader />
       </Header>
       <Main>
-        <h2>Home.js</h2>
+        <h2>Page404</h2>
       </Main>
       <Footer>
         <CompFooter />
@@ -41,4 +37,4 @@ function PageHome(props) {
   );
 }
 
-export default PageHome;
+export default Page404;
