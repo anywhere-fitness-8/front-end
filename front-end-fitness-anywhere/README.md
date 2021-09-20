@@ -33,37 +33,37 @@ The application MVP are the following
 ## Single Page Composition
 
 The application is composed of the following pages:
- * pageHome - "/" (for the public viewing)
- * pageLogin - "/login" (for both student and instructor)
- * pageProfile - "/profile" (for both student and instructor)
- * pageReserveClass - "/reserve" (for student only)
- * pageManageClass - "/manage" (for instructor only)
+ * `pageHome` - "/" (for the public viewing)
+ * `pageLogin` - "/login" (for both student and instructor)
+ * `pageProfile` - "/profile" (for both student and instructor)
+ * `pageReserveClass` - "/reserve" (for student only)
+ * `pageManageClass` - "/manage" (for instructor only)
 
 These are the components used to composite a page.
   * (common web page component)
-    * header.js - the header of a web page
-    * navigationBar.js - the navigation bar of a web page
-    * footer.js - the footer of a web page
+    * `header.js` - the header of a web page
+    * `navigationBar.js` - the navigation bar of a web page
+    * `footer.js` - the footer of a web page
   
   * (common form for user login and profile)  
-    * formLogin.js - form for logging in
-    * formProfile.js - form for create, edit a user profile
+    * `formLogin.js` - form for logging in
+    * `formProfile.js` - form for create, edit a user profile
   
   * (various level of class object)
-    * classCard.js - a card with interactive button(s) and input(s)
-    * classDetail.js - a div that show full detail of a class
-    * listOfClass.js - a list for showing multiple classCard.js
+    * `classCard.js` - a card with interactive button(s) and input(s)
+    * `classDetail.js` - a div that show full detail of a class
+    * `listOfClass.js` - a list for showing multiple classCard.js
   
   * (interactive component for users to add, edit,remove, and view data)
-    * taskManageClass.js - the interactive portal for an instructor to add, edit, or remove class(es)
-    * taskReserveClass.js - the interactive portal for a student to reserve or un-reserve a class
-    * userOnBoarding.js - the interactive portal for a brand new user
+    * `taskManageClass.js` - the interactive portal for an instructor to add, edit, or remove class(es)
+    * `taskReserveClass.js` - the interactive portal for a student to reserve or un-reserve a class
+    * `userOnBoarding.js` - the interactive portal for a brand new user
 
-### pageHome - "/"
+### *pageHome* - "/"
 
     This page is composed of these components : `CompHeader`, `CompFooter`.
 
-### pageLogin - "/login"
+### *pageLogin* - "/login"
 
     This page is composed of these components : `CompHeader`, `CompFooter`,`CompFormLogin`, and `CompUserOnboarding`.
 
@@ -73,7 +73,7 @@ These are the components used to composite a page.
 
     After a user successfully login, a user should be directed to an appropriate page.
 
-### pageProfile - "/profile"
+### *pageProfile* - "/profile"
 
     This page is composed of these components : `CompHeader`, `CompFooter`,  and `CompFormProfile`.
 
@@ -84,7 +84,7 @@ These are the components used to composite a page.
     * birth year
     * account type - student or instructor
 
-### pageReserveClass - "/reserve"
+### *pageReserveClass* - "/reserve"
 
     This page is composed of these components : `CompHeader`, `CompFooter`, `CompTaskReserveClass`, `CompListOfClass`,`CompClassDetail`, and `CompClassCard`.
 
@@ -96,7 +96,7 @@ These are the components used to composite a page.
     * `CompClassDetail`
     * `CompClassClassCard`
 
-### pageManageClass - "/manage"
+### *pageManageClass* - "/manage"
 
     This page is composed of these components : `CompHeader`, `CompFooter`, `CompTaskManageClass`, `CompListOfClass`,`CompClassDetail`, and `CompClassCard`.
 
@@ -108,7 +108,7 @@ These are the components used to composite a page.
       * `CompClassDetail`
       * `CompClassClassCard`
   
-### page404
+### *page404*
 
     This page is composed of these components : `CompHeader`, `CompFooter`.
 
