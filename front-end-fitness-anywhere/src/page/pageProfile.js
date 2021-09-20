@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
+import CompFormProfile from "../component/formProfile";
 
 const Container = styled.div`
   border: 1px solid black;
@@ -29,6 +30,10 @@ function PageProfile(props) {
       </Header>
       <Main>
         <h2>PageProfile.js</h2>
+        <p>
+          Need to be authenticated as Student or Instructor to use this page
+        </p>
+        <CompFormProfile />
       </Main>
       <Footer>
         <CompFooter />
