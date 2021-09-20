@@ -59,7 +59,7 @@ These are the components used to composite a page.
     * `taskReserveClass.js` - the interactive portal for a student to reserve or un-reserve a class
     * `userOnBoarding.js` - the interactive portal for a brand new user
 
-## Each Page Composition
+## Each Page Composition and Description
 ### *pageHome* - "/"
 
     This page is composed of these components : `CompHeader`, `CompFooter`.
