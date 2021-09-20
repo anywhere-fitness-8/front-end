@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
 import CompFormLogin from "../component/formLogIn";
+import CompUserOnboarding from "../component/userOnBoarding";
 
 const Container = styled.div`
   border: 1px solid black;
@@ -32,6 +33,7 @@ function PageLogIn(props) {
       <Main>
         <h2>PageLogIn.js</h2>
         <CompFormLogin />
+        <CompUserOnboarding />
       </Main>
       <Footer>
         <CompFooter />

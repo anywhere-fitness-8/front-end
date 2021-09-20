@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The application MVP are the following
 
-## Available Scripts
+[ ] 1. User can create/register as a `client` and login with the registered credentials.
 
-In the project directory, you can run:
+[ ] 2. User can create/register as an `instructor` by entering an additional Auth Code during signup, and can login with the registered credentials.
 
-### `npm start`
+[ ] 3. `client` and `instructor` are both presented with the appropriate on-boarding walkthrough on first sign-in, with an option to skip it.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[ ] 4. Authenticated `Instructor` can create update and delete a `class`. At a minimum, each `class` must have the following properties:
+    * `Name`
+    * `Type`
+    * `Start time`
+    * `Duration`
+    * `Intensity level`
+    * `Location`
+    * `Current number of registered attendees`
+    * `Max class size`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[ ] 5. Authenticated `client` can search for available classes. At a minimum, they must be able to search by the following criteria:
+   * `class time`
+   * `class date`
+   * `class duration`
+   * `class type`
+   * `intensity level`
+   * `class location`
 
-### `npm test`
+[ ] 6. Authenticated `instructor` can create virtual punch pass categories for each type of group fitness class they offer (yoga, insanity, RIPPED, pilates, etc.)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[ ] 7. Authenticated `user` can reserve a spot in a `class` with available seats open, and can reschedule or cancel their current `reservation` from the mobile app.
 
-### `npm run build`
+## Pages and Components
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application is composed of the following pages:
+ * `pageHome` - "/" (for the public viewing)
+ * `pageLogin` - "/login" (for both student and instructor)
+ * `pageProfile` - "/profile" (for both student and instructor)
+ * `pageReserveClass` - "/reserve" (for student only)
+ * `pageManageClass` - "/manage" (for instructor only)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+These are the components used to composite a page.
+  * (common web page component)
+    * `header.js` - the header of a web page
+    * `navigationBar.js` - the navigation bar of a web page
+    * `footer.js` - the footer of a web page
+  
+  * (common form for user login and profile)  
+    * `formLogin.js` - form for logging in
+    * `formProfile.js` - form for create, edit a user profile
+  
+  * (various level of class object)
+    * `classCard.js` - a card with interactive button(s) and input(s)
+    * `classDetail.js` - a div that show full detail of a class
+    * `listOfClass.js` - a list for showing multiple classCard.js
+  
+  * (interactive component for users to add, edit,remove, and view data)
+    * `taskManageClass.js` - the interactive portal for an instructor to add, edit, or remove class(es)
+    * `taskReserveClass.js` - the interactive portal for a student to reserve or un-reserve a class
+    * `userOnBoarding.js` - the interactive portal for a brand new user
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Each Page Composition and Description
+### *pageHome* - "/"
 
-### `npm run eject`
+    This page is composed of these components : `CompHeader`, `CompFooter`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### *pageLogin* - "/login"
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    This page is composed of these components : `CompHeader`, `CompFooter`,`CompFormLogin`, and `CompUserOnboarding`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    This page allow a user to signup for an account.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    Additionally, user can on skip the onboarding process (`CompUserOnboarding`).
 
-## Learn More
+    After a user successfully login, a user should be directed to an appropriate page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### *pageProfile* - "/profile"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    This page is composed of these components : `CompHeader`, `CompFooter`,  and `CompFormProfile`.
 
-### Code Splitting
+    This page allow a user to edit the profile content. The profile content must have the following fields
+    * first name
+    * last name
+    * email address
+    * birth year
+    * account type - student or instructor
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### *pageReserveClass* - "/reserve"
 
-### Analyzing the Bundle Size
+    This page is composed of these components : `CompHeader`, `CompFooter`, `CompTaskReserveClass`, `CompListOfClass`,`CompClassDetail`, and `CompClassCard`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    This page is protected and should be accessed by authorized student account only.
 
-### Making a Progressive Web App
+    The interaction of below components shall be defined on pageReserveClass component and render/re-render as needed.
+    * `CompTaskReserveClass`
+    * `CompListOfClass`
+    * `CompClassDetail`
+    * `CompClassClassCard`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### *pageManageClass* - "/manage"
 
-### Advanced Configuration
+    This page is composed of these components : `CompHeader`, `CompFooter`, `CompTaskManageClass`, `CompListOfClass`,`CompClassDetail`, and `CompClassCard`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    This page is protected and should be accessed by authorized instructor account only.
 
-### Deployment
+      The interaction of below components shall be defined on pageManageClass component  and render/re-render as needed.
+      * `CompTaskManageClass`
+      * `CompListOfClass`
+      * `CompClassDetail`
+      * `CompClassClassCard`
+  
+### *page404*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    This page is composed of these components : `CompHeader`, `CompFooter`.
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    This page is not part of MVP and only used when routing table does not match and valid URL.
