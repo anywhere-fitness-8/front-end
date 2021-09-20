@@ -35,27 +35,34 @@ The application MVP are the following
 
 
 
-## Each Page Composition
+## Single Page Composition
 
-The application is composed of the following pieces:
-* page
-    * pageHome - "/"
-    * pageLogin - "/login"
-    * pageProfile - "/profile"
-    * pageReserveClass - "/reserve"
-    * pageManageClass - "/manage"
-* components
-    * classCard.js
-    * classDetail.js
-    * footer.js
-    * formLogin.js
-    * formProfile.js
-    * header.js
-    * listOfClass.js
-    * navigationBar.js
-    * taskManageClass.js
-    * taskReserveClass.js
-    * userOnBoarding.js
+The application is composed of the following pages:
+ * pageHome - "/" (for the public viewing)
+ * pageLogin - "/login" (for both student and instructor)
+ * pageProfile - "/profile" (for both student and instructor)
+ * pageReserveClass - "/reserve" (for student only)
+ * pageManageClass - "/manage" (for instructor only)
+
+These are the components used to composite a page.
+  * (common web page component)
+    * header.js - the header of a web page
+    * navigationBar.js - the navigation bar of a web page
+    * footer.js - the footer of a web page
+  
+  * (common form for user login and profile)  
+    * formLogin.js - form for logging in
+    * formProfile.js - form for create, edit a user profile
+  
+  * (various level of class object)
+    * classCard.js - a card with interactive button(s) and input(s)
+    * classDetail.js - a div that show full detail of a class
+    * listOfClass.js - a list for showing multiple classCard.js
+  
+  * (interactive component for users to add, edit,remove, and view data)
+    * taskManageClass.js - the interactive portal for an instructor to add, edit, or remove class(es)
+    * taskReserveClass.js - the interactive portal for a student to reserve or un-reserve a class
+    * userOnBoarding.js - the interactive portal for a brand new user
 
 ### pageHome - "/"
 
