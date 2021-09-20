@@ -22,3 +22,8 @@ The application is composed of the following pieces:
     * taskReserveClass.js
     * userOnBoarding.js
 
+## Each Page Compositoin
+
+### pageHome - "/"
+
+    This page is composed of these components : `Header`, `Footer`.
