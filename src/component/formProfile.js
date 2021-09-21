@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   profileFormSchema,
@@ -13,10 +14,8 @@ const Input = styled.input``;
 const Button = styled.button``;
 const ValidationText = styled.p``;
 const Legend = styled.legend`
-  /* border: 1px solid red; */
 `;
 const Fieldset = styled.fieldset`
-  border: 1px solid red;
 `;
 
 function CompFormProfile(props) {
@@ -182,12 +181,17 @@ function CompFormProfile(props) {
             />
           </Label>
           <ValidationText>{stateValidationText.zipcode}</ValidationText>
+        
+          <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
+            Update Profile
+          </Button>
         </Fieldset>
-        {/* -------------------update button----------------------- */}
-        <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
-          Update Profile
-        </Button>
       </Form>
+        {/* -------------------update button----------------------- */}
+
+      <div>
+        <Link to='/logout'>Logout</Link>
+      </div>
     </Container>
   );
 }

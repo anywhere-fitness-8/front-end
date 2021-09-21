@@ -34,7 +34,7 @@ function CompHeader(props) {
   return (
     <Container>
       <Left>
-        <img src="https://picsum.photos/50" alt="random image" />
+        <img src="https://picsum.photos/50" alt="random" />
       </Left>
       <Right>
         <CompNavigationBar />
