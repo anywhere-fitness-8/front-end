@@ -1,17 +1,24 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CompFormFilterClass from "./formFilterClass";
 import CompFormAddClass from "./formAddClass";
 import { list_of_classes } from "./sample_data";
 import CompListOfClasses from "./listOfClass";
+import CompClassDetail from "./classDetail";
 
 const Container = styled.div``;
+const DIV_Flex_Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
 
 function CompTaskManageClass(props) {
   const [stateArrayOfClasses, set_stateArrayOfClasses] =
     useState(list_of_classes);
   const [stateNewClass, set_stateNewClass] = useState(null);
   const [stateSearchCriteria, set_stateSearchCriteria] = useState(null);
+  const [stateSelectedClass, set_stateSelectedClass] = useState(null);
 
   //event happens once after the component initially get render
   useEffect(() => {
@@ -21,9 +28,14 @@ function CompTaskManageClass(props) {
     // set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
   }, []);
 
+  useEffect(() => {
+    stateSelectedClass &&
+      console.log("stateSelectedClass = ", stateSelectedClass);
+  }, [stateSelectedClass]);
+
   //monitor change in stateArrayOfClasses
   useEffect(() => {
-    console.log("stateArrayOfClasses.length = ", stateArrayOfClasses.length);
+    // console.log("stateArrayOfClasses.length = ", stateArrayOfClasses.length);
   }, [stateArrayOfClasses]);
 
   //monitor change in stateNewClass
@@ -48,9 +60,21 @@ function CompTaskManageClass(props) {
         stateSearchCriteria ={" "}
         {stateSearchCriteria ? stateSearchCriteria : "null"}
       </p>
+      <p>
+        stateSelectedClass = {stateSelectedClass ? stateSelectedClass : "null"}
+      </p>
+
       <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
       <CompFormAddClass set_stateNewClass={set_stateNewClass} />
-      <CompListOfClasses input_object={stateArrayOfClasses} />
+      <DIV_Flex_Row>
+        <CompListOfClasses
+          input_object={stateArrayOfClasses}
+          set_stateSelectedClass={set_stateSelectedClass}
+        />
+        {stateSelectedClass && (
+          <CompClassDetail input_object={stateSelectedClass} />
+        )}
+      </DIV_Flex_Row>
     </Container>
   );
 }

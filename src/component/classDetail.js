@@ -24,3 +24,4 @@ function CompClassDetail(props) {
 }
 
 export default CompClassDetail;
+

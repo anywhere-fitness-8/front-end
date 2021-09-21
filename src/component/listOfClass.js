@@ -10,7 +10,7 @@ const Container = styled.div`
   height: 60vh;
 `;
 
-function CompListOfClasses({ input_object }) {
+function CompListOfClasses(props) {
   return (
     <Container>
       {/* {input_object && (
@@ -18,10 +18,16 @@ function CompListOfClasses({ input_object }) {
           CompListOfClasses.js has length of {Array.from(input_object).length}
         </p>
       )} */}
-      {input_object &&
-        Array.from(input_object).map((eachClass, index) => {
+      {props.input_object &&
+        Array.from(props.input_object).map((eachClass, index) => {
           if (eachClass) {
-            return <CompClassCard input_object={eachClass} key={index} />;
+            return (
+              <CompClassCard
+                input_object={eachClass}
+                key={index}
+                set_stateSelectedClass={props.set_stateSelectedClass}
+              />
+            );
           } else {
             return null;
           }
@@ -31,3 +37,6 @@ function CompListOfClasses({ input_object }) {
 }
 
 export default CompListOfClasses;
+/*
+{ input_object, set_stateSelectedClass }
+*/

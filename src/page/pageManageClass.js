@@ -32,8 +32,6 @@ function PageManageClass(props) {
         <CompHeader />
       </Header>
       <Main>
-        <h2>PageManageClass.js</h2>
-        <p>only Instructor can ues this page</p>
         <CompTaskManageClass />
         <CompListOfClass />
       </Main>
