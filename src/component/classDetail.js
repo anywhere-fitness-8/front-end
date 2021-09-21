@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  border: 10px solid black;
+  width: 55%;
+`;
 
 function CompClassDetail(props) {
   const [stateLoading, set_stateLoading] = useState(false);

@@ -7,17 +7,22 @@ import { list_of_classes } from "./sample_data";
 import CompListOfClasses from "./listOfClass";
 import CompClassDetail from "./classDetail";
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100%;
+`;
 const DIV_Flex_Row = styled.div`
   display: flex;
   flex-direction: row;
+  overflow: scroll;
+  height: 60%;
 `;
 
 function CompTaskManageClass(props) {
   //--------------------------------------------------------
   // const [stateArrayOfClasses, set_stateArrayOfClasses] =
   // useState(list_of_classes);
-  const [stateArrayOfClasses, set_stateArrayOfClasses] = useState([]);
+  const [stateArrayOfClasses, set_stateArrayOfClasses] =
+    useState(list_of_classes);
   //---------------------------------------------------------------------
   //set_stateNewClass allow user to add a class
   const [stateNewClass, set_stateNewClass] = useState(null);
@@ -27,9 +32,7 @@ function CompTaskManageClass(props) {
   const [stateSelectedClass, set_stateSelectedClass] = useState(null);
 
   //event happens once after the component initially get render
-  useEffect(() => {
-    set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
-  }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     // stateSelectedClass &&

@@ -6,10 +6,15 @@ import { list_of_classes } from "./sample_data";
 import CompListOfClasses from "./listOfClass";
 import CompClassDetail from "./classDetail";
 
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100%;
+`;
 const DIV_Flex_Row = styled.div`
   display: flex;
   flex-direction: row;
+
+  overflow: scroll;
+  height: 70%;
 `;
 
 function CompTaskReserveClass(props) {

@@ -7,7 +7,6 @@ const Container = styled.div`
   background-color: gray;
   width: 45%;
   overflow: scroll;
-  height: 60vh;
 `;
 
 function CompListOfClasses(props) {

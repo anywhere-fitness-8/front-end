@@ -35,9 +35,6 @@ function PageReserveClass(props) {
         <h2>PageReserveClass.js</h2>
         <p>only student can use this page</p>
         <CompTaskReserveClass />
-        <CompListOfClass />
-        <CompClassDetail />
-        <CompClassCard />
       </Main>
       <Footer>
         <CompFooter />
