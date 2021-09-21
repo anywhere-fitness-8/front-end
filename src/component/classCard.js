@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   border: 1px solid orange;
   width: 100%;
+  line-height: 1px;
 `;
 
 function CompClassCard(props) {
@@ -28,6 +29,7 @@ function CompClassCard(props) {
     // event.stopPropagation();
     event.preventDefault();
     // debugger;
+    props.set_stateSelectedClass(null);
     props.set_stateSelectedClass(stateData);
   };
 
