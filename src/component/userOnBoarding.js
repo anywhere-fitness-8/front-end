@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
 
+
 const Container = styled.div`
 display: flex;
   
   justify-content: center;
+
 `;
 const SkipButton = styled.button`
   
@@ -20,7 +22,6 @@ const SkipButton = styled.button`
  
 `
 
-const Container = styled.div``;
 
 function CompUserOnboarding(props) {
 
@@ -36,27 +37,33 @@ function CompUserOnboarding(props) {
 
   return (
     <Container>
-      <h3>CompUserOnboarding.js</h3>
+
+
       <div>
         <h3>Walkthrough tutorial</h3>
 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
 
 
+
+        
         <div className="skip-button">
           <SkipButton onClick={onClick} >
-
+          
             Skip!
-
+            
           </SkipButton>
+        
 
 
-
-
+          
         </div>
-
+        
       </div>
     </Container>
-
+    
   );
 }
+
+export default CompUserOnboarding;
+
