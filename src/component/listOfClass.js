@@ -13,11 +13,6 @@ const Container = styled.div`
 function CompListOfClasses(props) {
   return (
     <Container>
-      {/* {input_object && (
-        <p>
-          CompListOfClasses.js has length of {Array.from(input_object).length}
-        </p>
-      )} */}
       {props.input_object &&
         Array.from(props.input_object).map((eachClass, index) => {
           if (eachClass) {
