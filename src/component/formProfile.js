@@ -49,7 +49,7 @@ function CompFormProfile(props) {
 
   return (
     <Container>
-      <Form>
+      <Form id="profile_form">
         <Fieldset>
           <Legend>UserName and Password</Legend>
           {/* -----------------username input------------------------------- */}
@@ -95,6 +95,7 @@ function CompFormProfile(props) {
               placeholder="(enter full name)"
             />
           </Label>
+          <ValidationText>{stateValidationText.name}</ValidationText>
           {/* -----------------email input------------------------------- */}
           <Label>
             <b>email : </b>
@@ -106,7 +107,7 @@ function CompFormProfile(props) {
               placeholder="(enter *@domain.com)"
             />
           </Label>
-
+          <ValidationText>{stateValidationText.email}</ValidationText>
           {/* -----------------birthdate input------------------------------- */}
           <Label>
             <b>birthdate : </b>
@@ -117,7 +118,7 @@ function CompFormProfile(props) {
               onChange={cb_onChange}
             />
           </Label>
-
+          <ValidationText>{stateValidationText.birthdate}</ValidationText>
           {/* -----------------address input------------------------------- */}
           <Label>
             <b>address : </b>
@@ -129,6 +130,7 @@ function CompFormProfile(props) {
               placeholder="(enter ## street-name )"
             />
           </Label>
+          <ValidationText>{stateValidationText.address}</ValidationText>
           {/* -----------------city input------------------------------- */}
           <Label>
             <b>city : </b>
@@ -140,6 +142,7 @@ function CompFormProfile(props) {
               placeholder="(enter city name)"
             />
           </Label>
+          <ValidationText>{stateValidationText.city}</ValidationText>
           {/* -----------------state input------------------------------- */}
           <Label>
             <b>state : </b>
@@ -152,6 +155,7 @@ function CompFormProfile(props) {
               placeholder="(enter state, i.e. CA)"
             />
           </Label>
+          <ValidationText>{stateValidationText.state}</ValidationText>
           {/* -----------------zipcode input------------------------------- */}
           <Label>
             <b>zipcode : </b>
@@ -160,13 +164,11 @@ function CompFormProfile(props) {
               name="zipcode"
               value={stateFormData.zipcode}
               onChange={cb_onChange}
-              min="00001"
-              max="99999"
               maxLength="5"
               placeholder="(enter #####)"
             />
           </Label>
-          <ValidationText>{stateValidationText.username}</ValidationText>
+          <ValidationText>{stateValidationText.zipcode}</ValidationText>
           {/* -------------------update button----------------------- */}
           <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
             Update
