@@ -5,26 +5,16 @@ const Container = styled.div``;
 
 function CompClassDetail(props) {
   const [stateLoading, set_stateLoading] = useState(false);
-  const {
-    name,
-    date,
-    startTime,
-    type,
-    duration,
-    intensityLevel,
-    location,
-    maxClassSize,
-    registeredAttendees,
-  } = props.input_object;
+  const { input_object } = props;
   return (
     <Container>
       <h3>CompClassDetail.js</h3>
-      {stateLoading && <p>Loading</p>}
-      {!stateLoading && <p>name: {name}</p>}
-      {!stateLoading && <p>date: {date}</p>}
-      {!stateLoading && <p>type: {type}</p>}
-      {!stateLoading && <p>location: {location}</p>}
-      {!stateLoading && <p>duration: {duration}</p>}
+      {/* {stateLoading && <p>Loading</p>} */}
+      {input_object && <p>name: {input_object.name}</p>}
+      {input_object && <p>date: {input_object.date}</p>}
+      {input_object && <p>type: {input_object.type}</p>}
+      {input_object && <p>location: {input_object.location}</p>}
+      {input_object && <p>duration: {input_object.duration}</p>}
     </Container>
   );
 }
