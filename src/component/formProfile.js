@@ -7,6 +7,12 @@ const Label = styled.div``;
 const Input = styled.input``;
 const Button = styled.button``;
 const ValidationText = styled.p``;
+const Legend = styled.legend`
+  /* border: 1px solid red; */
+`;
+const Fieldset = styled.fieldset`
+  border: 1px solid red;
+`;
 
 function CompFormProfile(props) {
   const INITIAL_STATE = { username: "", password: "" };
@@ -25,7 +31,7 @@ function CompFormProfile(props) {
     }
   };
 
-  const cb_onSubmit = (event) => {
+  const cb_onUpdate = (event) => {
     //if validation pass
     set_stateFormData(INITIAL_STATE);
     set_stateValidationText(INITIAL_STATE);
@@ -33,35 +39,129 @@ function CompFormProfile(props) {
 
   return (
     <Container>
-      <h3>CompFormLogin.js</h3>
       <Form>
-        {/* -----------------username input------------------------------- */}
-        <Label>
-          <b>Username : </b>
-          <Input
-            name="username"
-            value={stateFormData.username}
-            onChange={cb_onChange}
-            placeholder="(enter username)"
-            autoFocus
-          />
-        </Label>
-        <ValidationText>{stateValidationText.username}</ValidationText>
-        {/* -------------------password input---------------------------- */}
-        <Label>
-          <b>Password : </b>
-          <Input
-            name="password"
-            value={stateFormData.password}
-            onChange={cb_onChange}
-            placeholder="(enter password)"
-          />
-        </Label>
-        <ValidationText>{stateValidationText.username}</ValidationText>
-        {/* -------------------submit button----------------------- */}
-        <Button disabled={!stateValidationBoolean} onClick={cb_onSubmit}>
-          Login
-        </Button>
+        <Fieldset>
+          <Legend>UserName and Password</Legend>
+          {/* -----------------username input------------------------------- */}
+          <Label>
+            <b>Username : </b>
+            <Input
+              type="text"
+              name="username"
+              value={stateFormData.username}
+              onChange={cb_onChange}
+              placeholder="(enter username)"
+              autoFocus
+            />
+          </Label>
+          <ValidationText>{stateValidationText.username}</ValidationText>
+          {/* -------------------password input---------------------------- */}
+          <Label>
+            <b>Password : </b>
+            <Input
+              type="password"
+              name="password"
+              value={stateFormData.password}
+              onChange={cb_onChange}
+              placeholder="(enter password)"
+            />
+          </Label>
+          <ValidationText>{stateValidationText.username}</ValidationText>
+          {/* -------------------update button----------------------- */}
+          <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
+            Update
+          </Button>
+        </Fieldset>
+
+        <Fieldset>
+          <Legend>Personal Info</Legend>
+          {/* -----------------name input------------------------------- */}
+          <Label>
+            <b>name : </b>
+            <Input
+              name="name"
+              value={stateFormData.name}
+              onChange={cb_onChange}
+              placeholder="(enter full name)"
+            />
+          </Label>
+          {/* -----------------email input------------------------------- */}
+          <Label>
+            <b>email : </b>
+            <Input
+              type="email"
+              name="email"
+              value={stateFormData.email}
+              onChange={cb_onChange}
+              placeholder="(enter *@domain.com)"
+            />
+          </Label>
+
+          {/* -----------------birthdate input------------------------------- */}
+          <Label>
+            <b>birthdate : </b>
+            <Input
+              type="date"
+              name="birthdate"
+              value={stateFormData.birthdate}
+              onChange={cb_onChange}
+            />
+          </Label>
+
+          {/* -----------------address input------------------------------- */}
+          <Label>
+            <b>address : </b>
+            <Input
+              type="text"
+              name="address"
+              value={stateFormData.address}
+              onChange={cb_onChange}
+              placeholder="(enter ## street-name )"
+            />
+          </Label>
+          {/* -----------------city input------------------------------- */}
+          <Label>
+            <b>city : </b>
+            <Input
+              type="text"
+              name="city"
+              value={stateFormData.city}
+              onChange={cb_onChange}
+              placeholder="(enter city name)"
+            />
+          </Label>
+          {/* -----------------state input------------------------------- */}
+          <Label>
+            <b>state : </b>
+            <Input
+              type="text"
+              name="state"
+              value={stateFormData.state}
+              onChange={cb_onChange}
+              maxLength="2"
+              placeholder="(enter state, i.e. CA)"
+            />
+          </Label>
+          {/* -----------------zipcode input------------------------------- */}
+          <Label>
+            <b>zipcode : </b>
+            <Input
+              type="tel"
+              name="zipcode"
+              value={stateFormData.zipcode}
+              onChange={cb_onChange}
+              min="00001"
+              max="99999"
+              maxLength="5"
+              placeholder="(enter #####)"
+            />
+          </Label>
+          <ValidationText>{stateValidationText.username}</ValidationText>
+          {/* -------------------update button----------------------- */}
+          <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
+            Update
+          </Button>
+        </Fieldset>
       </Form>
     </Container>
   );

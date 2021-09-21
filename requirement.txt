@@ -37,3 +37,6 @@
 //------------------------------------------------------------------------
 make mvp object 6 clearer
 
+formLogin - username, password, accountType
+formProfile - name, username, email, password,  accountType, address, city, state, zipcode, birthdate, intensityLevel
+

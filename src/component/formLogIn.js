@@ -7,9 +7,11 @@ const Label = styled.div``;
 const Input = styled.input``;
 const Button = styled.button``;
 const ValidationText = styled.p``;
+const Select = styled.select``;
+const Option = styled.option``;
 
 function CompFormLogin(props) {
-  const INITIAL_STATE = { username: "", password: "" };
+  const INITIAL_STATE = { username: "", password: "", accountType: "" };
   const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateValidationBoolean, set_stateValidationBoolean] = useState(false);
   const [stateValidationText, set_stateValidationText] =
@@ -39,6 +41,7 @@ function CompFormLogin(props) {
         <Label>
           <b>Username : </b>
           <Input
+            type="text"
             name="username"
             value={stateFormData.username}
             onChange={cb_onChange}
@@ -51,6 +54,7 @@ function CompFormLogin(props) {
         <Label>
           <b>Password : </b>
           <Input
+            type="password"
             name="password"
             value={stateFormData.password}
             onChange={cb_onChange}
@@ -58,6 +62,20 @@ function CompFormLogin(props) {
           />
         </Label>
         <ValidationText>{stateValidationText.username}</ValidationText>
+        {/* -------------------password input---------------------------- */}
+        <Label>
+          <b>Account Type : </b>
+          <Select
+            value={stateFormData.accountType}
+            name="accountType"
+            onChange={cb_onChange}
+          >
+            <Option value="">(Please select one)</Option>
+            <Option value="student">Student</Option>
+            <Option value="instructor">Instructor</Option>
+          </Select>
+        </Label>
+        <ValidationText>{stateValidationText.accountType}</ValidationText>
         {/* -------------------submit button----------------------- */}
         <Button disabled={!stateValidationBoolean} onClick={cb_onSubmit}>
           Login
