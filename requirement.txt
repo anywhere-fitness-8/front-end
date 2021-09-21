@@ -8,23 +8,24 @@
 
 4. Authenticated `Instructor` can create update and delete a `class`. At a minimum, each `class` must have the following properties:
 
-- `Name`
-- `Type`
-- `Start time`
-- `Duration`
-- `Intensity level`
-- `Location`
-- `Current number of registered attendees`
-- `Max class size`
+- `Name` - name ==
+- `Type` - type == 
+            - date ==
+- `Start time` - startTime ==
+- `Duration`    -duration ==
+- `Intensity level` - intensityLevel ==
+- `Location`  - location ==
+- `Current number of registered attendees` - registeredAttendees (no need in CompFormAddClass)
+- `Max class size` - maxClassSize
 
 5. Authenticated `client` can search for available classes. At a minimum, they must be able to search by the following criteria:
-
-- `class time`
-- `class date`
-- `class duration`
-- `class type`
-- `intensity level`
-- `class location`
+                - name ==
+- `class time`  - time ==
+- `class date` - date ==
+- `class duration` - duration ==
+- `class type`  - type ==
+- `intensity level` - intensityLevel ==
+- `class location` - location ==
 
 6. Authenticated `instructor` can create virtual punch pass categories for each type of group fitness class they offer (yoga, insanity, RIPPED, pilates, etc.)
 
