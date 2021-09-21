@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import {
-  loginFormSchema,
   profileFormSchema,
   schema_validate_input,
   schema_validate_form,
