@@ -1,7 +1,7 @@
 export const list_of_classes = [
   {
     date: "2021-09-07",
-    duration: "4",
+    duration: "1",
     intensityLevel: "low",
     location: "beach",
     maxClassSize: "23",
@@ -12,7 +12,7 @@ export const list_of_classes = [
   },
   {
     date: "2021-08-30",
-    duration: "5",
+    duration: "2",
     intensityLevel: "low",
     location: "Long Beach, CA",
     maxClassSize: "55",
@@ -23,7 +23,7 @@ export const list_of_classes = [
   },
   {
     date: "2021-09-07",
-    duration: "4",
+    duration: "3",
     intensityLevel: "low",
     location: "beach",
     maxClassSize: "23",
@@ -45,7 +45,7 @@ export const list_of_classes = [
   },
   {
     date: "2021-09-07",
-    duration: "4",
+    duration: "5",
     intensityLevel: "low",
     location: "beach",
     maxClassSize: "23",
@@ -56,7 +56,7 @@ export const list_of_classes = [
   },
   {
     date: "2021-09-07",
-    duration: "4",
+    duration: "6",
     intensityLevel: "low",
     location: "beach",
     maxClassSize: "23",

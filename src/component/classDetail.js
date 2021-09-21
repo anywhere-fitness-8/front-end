@@ -40,6 +40,7 @@ function CompClassDetail(props) {
       {!stateLoading && <p>date: {stateData.date}</p>}
       {!stateLoading && <p>type: {stateData.type}</p>}
       {!stateLoading && <p>location: {stateData.location}</p>}
+      {!stateLoading && <p>duration: {stateData.duration}</p>}
     </Container>
   );
 }

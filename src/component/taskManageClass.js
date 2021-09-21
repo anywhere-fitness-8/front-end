@@ -14,23 +14,26 @@ const DIV_Flex_Row = styled.div`
 `;
 
 function CompTaskManageClass(props) {
-  const [stateArrayOfClasses, set_stateArrayOfClasses] =
-    useState(list_of_classes);
-  const [stateNewClass, set_stateNewClass] = useState(list_of_classes[0]);
+  //--------------------------------------------------------
+  // const [stateArrayOfClasses, set_stateArrayOfClasses] =
+  // useState(list_of_classes);
+  const [stateArrayOfClasses, set_stateArrayOfClasses] = useState([]);
+  //---------------------------------------------------------------------
+  //set_stateNewClass allow user to add a class
+  const [stateNewClass, set_stateNewClass] = useState(null);
+  //set_stateSearchCriteria allow user to search class
   const [stateSearchCriteria, set_stateSearchCriteria] = useState(null);
+  //set_stateSelectedClass allow user to render a CompClassDetail in CompTaskManageClass or on "/manage" page
   const [stateSelectedClass, set_stateSelectedClass] = useState(null);
 
   //event happens once after the component initially get render
   useEffect(() => {
-    //??????????????????????????????????????????????????????????????????
-    // Why below line does not work? ???????????????????????????????????
-    //??????????????????????????????????????????????????????????????????
-    // set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
+    set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
   }, []);
 
   useEffect(() => {
-    stateSelectedClass &&
-      console.log("stateSelectedClass = ", stateSelectedClass);
+    // stateSelectedClass &&
+    // console.log("stateSelectedClass = ", stateSelectedClass);
   }, [stateSelectedClass]);
 
   //monitor change in stateArrayOfClasses
@@ -40,7 +43,8 @@ function CompTaskManageClass(props) {
 
   //monitor change in stateNewClass
   useEffect(() => {
-    set_stateArrayOfClasses([...stateArrayOfClasses, stateNewClass]);
+    stateNewClass &&
+      set_stateArrayOfClasses([...stateArrayOfClasses, stateNewClass]);
   }, [stateNewClass]);
 
   //monitor change in stateSearchCriteria
@@ -58,10 +62,14 @@ function CompTaskManageClass(props) {
       <p>Length of stateArrayOfClasses is {stateArrayOfClasses.length}</p>
       <p>
         stateSearchCriteria ={" "}
-        {stateSearchCriteria ? stateSearchCriteria : "null"}
+        {stateSearchCriteria ? JSON.stringify(stateSearchCriteria) : "null"}
       </p>
       <p>
-        stateSelectedClass = {stateSelectedClass ? stateSelectedClass : "null"}
+        stateSelectedClass ={" "}
+        {stateSelectedClass ? JSON.stringify(stateSelectedClass) : "null"}
+      </p>
+      <p>
+        stateNewClass = {stateNewClass ? JSON.stringify(stateNewClass) : "null"}
       </p>
 
       <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
@@ -71,10 +79,12 @@ function CompTaskManageClass(props) {
           input_object={stateArrayOfClasses}
           set_stateSelectedClass={set_stateSelectedClass}
         />
+        {/* ?????????????????????????????????????????????????????????????????????? */}
+        {/* How to force CompClassDetail re-render when stateSelectedClass change? */}
+        {/* ?????????????????????????????????????????????????????????????????????? */}
         {stateSelectedClass ? (
           <CompClassDetail input_object={stateSelectedClass} />
         ) : null}
-        {/* <CompClassDetail input_object={list_of_classes[0]} /> */}
       </DIV_Flex_Row>
     </Container>
   );

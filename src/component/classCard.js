@@ -24,13 +24,14 @@ function CompClassCard(props) {
   }, [stateData]);
 
   const cb_onClick = (event) => {
-    console.log("classCard.js - called cb_onClick");
-    event.stopPropagation();
+    // console.log("classCard.js - called cb_onClick");
+    // event.stopPropagation();
     event.preventDefault();
-    // props.set_stateSelectedClass(props.input_object);
+    // debugger;
+    props.set_stateSelectedClass(stateData);
   };
 
-  // console.log(props.input_object);
+  // console.log(props);
 
   return (
     <Container>
@@ -40,6 +41,7 @@ function CompClassCard(props) {
       {!stateLoading && <p>date: {stateData.date}</p>}
       {!stateLoading && <p>type: {stateData.type}</p>}
       {!stateLoading && <p>location: {stateData.location}</p>}
+      {!stateLoading && <p>duration: {stateData.duration}</p>}
       <button onClick={cb_onClick}>Select</button>
     </Container>
   );

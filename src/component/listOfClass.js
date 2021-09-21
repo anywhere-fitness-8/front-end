@@ -5,7 +5,7 @@ import CompClassCard from "./classCard";
 const Container = styled.div`
   border: 1px solid green;
   background-color: gray;
-  width: 25%;
+  width: 45%;
   overflow: scroll;
   height: 60vh;
 `;
