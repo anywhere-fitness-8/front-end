@@ -15,7 +15,17 @@ const Fieldset = styled.fieldset`
 `;
 
 function CompFormProfile(props) {
-  const INITIAL_STATE = { username: "", password: "" };
+  const INITIAL_STATE = {
+    username: "",
+    password: "",
+    name: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    birthdate: "",
+  };
   const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateValidationBoolean, set_stateValidationBoolean] = useState(false);
   const [stateValidationText, set_stateValidationText] =
