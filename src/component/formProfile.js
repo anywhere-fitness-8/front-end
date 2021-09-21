@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import {
+  loginFormSchema,
+  profileFormSchema,
+  schema_validate_input,
+  schema_validate_form,
+} from "../component/schema_validation";
 
 const Container = styled.div``;
 const Form = styled.div``;
@@ -35,10 +41,14 @@ function CompFormProfile(props) {
     const { name, value } = event.target;
     set_stateFormData({ ...stateFormData, [name]: value });
 
-    //debug
-    if (stateFormData.username !== "" && stateFormData.password !== "") {
-      set_stateValidationBoolean(true);
-    }
+    //validate input
+    schema_validate_input(
+      profileFormSchema,
+      name,
+      value,
+      stateValidationText,
+      set_stateValidationText
+    );
   };
 
   const cb_onUpdate = (event) => {
@@ -46,6 +56,14 @@ function CompFormProfile(props) {
     set_stateFormData(INITIAL_STATE);
     set_stateValidationText(INITIAL_STATE);
   };
+
+  useEffect(() => {
+    schema_validate_form(
+      profileFormSchema,
+      stateFormData,
+      set_stateValidationBoolean
+    );
+  }, [stateFormData]);
 
   return (
     <Container>
@@ -76,11 +94,7 @@ function CompFormProfile(props) {
               placeholder="(enter password)"
             />
           </Label>
-          <ValidationText>{stateValidationText.username}</ValidationText>
-          {/* -------------------update button----------------------- */}
-          <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
-            Update
-          </Button>
+          <ValidationText>{stateValidationText.password}</ValidationText>
         </Fieldset>
 
         <Fieldset>
@@ -160,7 +174,7 @@ function CompFormProfile(props) {
           <Label>
             <b>zipcode : </b>
             <Input
-              type="tel"
+              type="number"
               name="zipcode"
               value={stateFormData.zipcode}
               onChange={cb_onChange}
@@ -169,11 +183,11 @@ function CompFormProfile(props) {
             />
           </Label>
           <ValidationText>{stateValidationText.zipcode}</ValidationText>
-          {/* -------------------update button----------------------- */}
-          <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
-            Update
-          </Button>
         </Fieldset>
+        {/* -------------------update button----------------------- */}
+        <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
+          Update Profile
+        </Button>
       </Form>
     </Container>
   );

@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import {
+  loginFormSchema,
+  schema_validate_input,
+  schema_validate_form,
+} from "../component/schema_validation";
 
 const Container = styled.div``;
 const Form = styled.div``;
@@ -11,7 +16,7 @@ const Select = styled.select``;
 const Option = styled.option``;
 
 function CompFormLogin(props) {
-  const INITIAL_STATE = { username: "", password: "", accountType: "" };
+  const INITIAL_STATE = { username: "", password: "", accounttype: "" };
   const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateValidationBoolean, set_stateValidationBoolean] = useState(false);
   const [stateValidationText, set_stateValidationText] =
@@ -21,11 +26,24 @@ function CompFormLogin(props) {
     const { name, value } = event.target;
     set_stateFormData({ ...stateFormData, [name]: value });
 
-    //debug
-    if (stateFormData.username !== "" && stateFormData.password !== "") {
-      set_stateValidationBoolean(true);
-    }
+    //validate user input
+    schema_validate_input(
+      loginFormSchema,
+      name,
+      value,
+      stateValidationText,
+      set_stateValidationText
+    );
   };
+
+  useEffect(() => {
+    //validate form
+    schema_validate_form(
+      loginFormSchema,
+      stateFormData,
+      set_stateValidationBoolean
+    );
+  }, [stateFormData]);
 
   const cb_onSubmit = (event) => {
     //if validation pass
@@ -61,13 +79,13 @@ function CompFormLogin(props) {
             placeholder="(enter password)"
           />
         </Label>
-        <ValidationText>{stateValidationText.username}</ValidationText>
+        <ValidationText>{stateValidationText.password}</ValidationText>
         {/* -------------------password input---------------------------- */}
         <Label>
           <b>Account Type : </b>
           <Select
-            value={stateFormData.accountType}
-            name="accountType"
+            value={stateFormData.accounttype}
+            name="accounttype"
             onChange={cb_onChange}
           >
             <Option value="">(Please select one)</Option>
@@ -75,7 +93,7 @@ function CompFormLogin(props) {
             <Option value="instructor">Instructor</Option>
           </Select>
         </Label>
-        <ValidationText>{stateValidationText.accountType}</ValidationText>
+        <ValidationText>{stateValidationText.accounttype}</ValidationText>
         {/* -------------------submit button----------------------- */}
         <Button disabled={!stateValidationBoolean} onClick={cb_onSubmit}>
           Login
