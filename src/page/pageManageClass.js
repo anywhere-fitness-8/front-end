@@ -36,8 +36,6 @@ function PageManageClass(props) {
         <p>only Instructor can ues this page</p>
         <CompTaskManageClass />
         <CompListOfClass />
-        <CompClassDetail />
-        <CompClassCard />
       </Main>
       <Footer>
         <CompFooter />

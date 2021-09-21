@@ -1,12 +1,31 @@
 import React from "react";
 import styled from "styled-components";
+import CompClassCard from "./classCard";
 
-const Container = styled.div``;
+const Container = styled.div`
+  border: 1px solid green;
+  background-color: gray;
+  width: 25%;
+  overflow: scroll;
+  height: 60vh;
+`;
 
-function CompListOfClasses(props) {
+function CompListOfClasses({ input_object }) {
   return (
     <Container>
-      <h3>CompListOfClasses.js</h3>
+      {/* {input_object && (
+        <p>
+          CompListOfClasses.js has length of {Array.from(input_object).length}
+        </p>
+      )} */}
+      {input_object &&
+        Array.from(input_object).map((eachClass, index) => {
+          if (eachClass) {
+            return <CompClassCard input_object={eachClass} key={index} />;
+          } else {
+            return null;
+          }
+        })}
     </Container>
   );
 }

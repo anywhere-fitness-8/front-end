@@ -2,16 +2,29 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CompFormFilterClass from "./formFilterClass";
 import CompFormAddClass from "./formAddClass";
+import { list_of_classes } from "./sample_data";
+import CompListOfClasses from "./listOfClass";
 
 const Container = styled.div``;
 
 function CompTaskManageClass(props) {
-  const [stateArrayOfClasses, set_stateArrayOfClasses] = useState([]);
+  const [stateArrayOfClasses, set_stateArrayOfClasses] =
+    useState(list_of_classes);
   const [stateNewClass, set_stateNewClass] = useState(null);
   const [stateSearchCriteria, set_stateSearchCriteria] = useState(null);
 
+  //event happens once after the component initially get render
+  useEffect(() => {
+    //??????????????????????????????????????????????????????????????????
+    // Why below line does not work? ???????????????????????????????????
+    //??????????????????????????????????????????????????????????????????
+    // set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
+  }, []);
+
   //monitor change in stateArrayOfClasses
-  useEffect(() => {}, [stateArrayOfClasses]);
+  useEffect(() => {
+    console.log("stateArrayOfClasses.length = ", stateArrayOfClasses.length);
+  }, [stateArrayOfClasses]);
 
   //monitor change in stateNewClass
   useEffect(() => {
@@ -30,13 +43,14 @@ function CompTaskManageClass(props) {
   return (
     <Container>
       <h3>CompTaskManageClass.js</h3>
-      <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
-      <CompFormAddClass set_stateNewClass={set_stateNewClass} />
       <p>Length of stateArrayOfClasses is {stateArrayOfClasses.length}</p>
       <p>
         stateSearchCriteria ={" "}
         {stateSearchCriteria ? stateSearchCriteria : "null"}
       </p>
+      <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
+      <CompFormAddClass set_stateNewClass={set_stateNewClass} />
+      <CompListOfClasses input_object={stateArrayOfClasses} />
     </Container>
   );
 }
