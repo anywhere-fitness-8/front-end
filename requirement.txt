@@ -33,3 +33,6 @@
 ## 🏃‍♀️**Stretch**
 
 1. Implement payments using PayPal, Stripe or another 3rd party API.
+
+//------------------------------------------------------------------------
+make mvp object 6 clearer
