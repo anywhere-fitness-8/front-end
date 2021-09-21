@@ -4,11 +4,12 @@ import CompFooter from "../component/footer";
 import CompFormProfile from "../component/formProfile";
 
 const Container = styled.div`
-  border: 1px solid black;
   height: 95vh;
   width: 80vw;
   margin: 2.5vh 10vw 2.5vh 10vw;
   padding: 0;
+  background-color: whitesmoke;
+  border-radius: 20px 20px 0 0;
 `;
 const Header = styled.header`
   height: 5%;
