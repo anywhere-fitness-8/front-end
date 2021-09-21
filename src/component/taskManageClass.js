@@ -16,7 +16,7 @@ const DIV_Flex_Row = styled.div`
 function CompTaskManageClass(props) {
   const [stateArrayOfClasses, set_stateArrayOfClasses] =
     useState(list_of_classes);
-  const [stateNewClass, set_stateNewClass] = useState(null);
+  const [stateNewClass, set_stateNewClass] = useState(list_of_classes[0]);
   const [stateSearchCriteria, set_stateSearchCriteria] = useState(null);
   const [stateSelectedClass, set_stateSelectedClass] = useState(null);
 
@@ -71,9 +71,10 @@ function CompTaskManageClass(props) {
           input_object={stateArrayOfClasses}
           set_stateSelectedClass={set_stateSelectedClass}
         />
-        {stateSelectedClass && (
+        {stateSelectedClass ? (
           <CompClassDetail input_object={stateSelectedClass} />
-        )}
+        ) : null}
+        {/* <CompClassDetail input_object={list_of_classes[0]} /> */}
       </DIV_Flex_Row>
     </Container>
   );

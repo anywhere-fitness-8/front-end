@@ -24,9 +24,10 @@ function CompClassCard(props) {
   }, [stateData]);
 
   const cb_onClick = (event) => {
+    console.log("classCard.js - called cb_onClick");
     event.stopPropagation();
     event.preventDefault();
-    props.set_stateSelectedClass(stateData);
+    // props.set_stateSelectedClass(props.input_object);
   };
 
   // console.log(props.input_object);
