@@ -7,7 +7,6 @@ const Container = styled.div`
 `;
 
 function CompClassDetail(props) {
-  const [stateLoading, set_stateLoading] = useState(false);
   const { input_object } = props;
 
   //for Unit 3 to post axios call

@@ -23,6 +23,7 @@ function CompTaskManageClass(props) {
   // useState(list_of_classes);
   const [stateArrayOfClasses, set_stateArrayOfClasses] =
     useState(list_of_classes);
+  
   //---------------------------------------------------------------------
   //set_stateNewClass allow user to add a class
   const [stateNewClass, set_stateNewClass] = useState(null);
