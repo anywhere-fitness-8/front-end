@@ -27,6 +27,9 @@
 - `intensity level` - intensityLevel ==
 - `class location` - location ==
 
+search (criteria1 && .... && criterian)
+search (criteria1 || .... || criterian)
+
 6. Authenticated `instructor` can create virtual punch pass categories for each type of group fitness class they offer (yoga, insanity, RIPPED, pilates, etc.)
 
 7. Authenticated `user` can reserve a spot in a `class` with available seats open, and can reschedule or cancel their current `reservation` from the mobile app.
