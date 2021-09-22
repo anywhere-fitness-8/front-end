@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   border: 10px solid black;
-  width: 55%;
+  width: 95%;
+  height: 100%;
 `;
 
 const Span_Green = styled.span`
@@ -26,7 +27,7 @@ function CompClassDetail({
   const helper_update_reservation_per_user = () => {};
 
   const cb_OnCLick_Reserve = () => {
-    /*
+    /*----------------------------------------------------------
       when a user click reserve,
       _add the class_id to stateArrayOfReservedClass
       _update the reservation status to the backend using helper_update_reservation_per_user
@@ -45,13 +46,12 @@ function CompClassDetail({
     //??????????????????????????????????
   };
 
-  const cb_OnCLick_Delete_Reserve = () => {
-    /*
+  /*----------------------------------------------------------------
       when a user click "Delete Reservation",
       _delete the class_id from stateArrayOfReservedClass
       _update the reservation status to the backend using helper_update_reservation_per_user
     */
-
+  const cb_OnCLick_Delete_Reserve = () => {
     //_delete the class_id from stateArrayOfReservedClass
     set_stateArrayOfReservedClass(
       stateArrayOfReservedClass.filter((each) => {
@@ -92,13 +92,3 @@ function CompClassDetail({
 }
 
 export default CompClassDetail;
-
-/*
-
-stateReservationStatus
-
-stateArrayOfReservedClass={stateArrayOfReservedClass}
-
-set_stateArrayOfReservedClass={set_stateArrayOfReservedClass}
-
-*/

@@ -22,6 +22,7 @@ const DIV_Left = styled.div`
 `;
 const DIV_Right = styled.div`
   width: 50%;
+  height: 100%;
 `;
 
 function CompTaskReserveClass(props) {
@@ -88,8 +89,10 @@ function CompTaskReserveClass(props) {
           }
         });
 
+        //store temp_arrary in stateArrayOfRenderedClasses for rendering
         set_stateArrayOfRenderedClasses(temp_array);
 
+        //set stateSearchCriteria to initial state (null state)
         set_stateSearchCriteria(null);
       } //end if
     }, //end function
