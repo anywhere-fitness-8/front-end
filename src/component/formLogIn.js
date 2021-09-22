@@ -19,7 +19,6 @@ const ValidationText = styled.p`
   color: red;
 `;
 
-
 function CompFormLogin(props) {
 
   console.log(localStorage.token)
