@@ -2,9 +2,6 @@ import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
 import CompTaskManageClass from "../component/taskManageClass";
-import CompListOfClass from "../component/listOfClass";
-import CompClassDetail from "../component/classDetail";
-import CompClassCard from "../component/classCard";
 
 const Container = styled.div`
   height: 95vh;
@@ -33,12 +30,7 @@ function PageManageClass(props) {
         <CompHeader />
       </Header>
       <Main>
-        <h2>PageManageClass.js</h2>
-        <p>only Instructor can ues this page</p>
         <CompTaskManageClass />
-        <CompListOfClass />
-        <CompClassDetail />
-        <CompClassCard />
       </Main>
       <Footer>
         <CompFooter />

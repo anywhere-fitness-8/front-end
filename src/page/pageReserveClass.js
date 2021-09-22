@@ -2,9 +2,6 @@ import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
 import CompTaskReserveClass from "../component/taskReserveClass";
-import CompListOfClass from "../component/listOfClass";
-import CompClassDetail from "../component/classDetail";
-import CompClassCard from "../component/classCard";
 
 const Container = styled.div`
   height: 95vh;
@@ -36,9 +33,6 @@ function PageReserveClass(props) {
         <h2>PageReserveClass.js</h2>
         <p>only student can use this page</p>
         <CompTaskReserveClass />
-        <CompListOfClass />
-        <CompClassDetail />
-        <CompClassCard />
       </Main>
       <Footer>
         <CompFooter />
