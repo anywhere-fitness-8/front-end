@@ -148,3 +148,17 @@ name ===
 - `class location`===
 
 */
+/*
+when instructor click add
+_add new class to stateArrayOfClass
+_unit post the newClassState to the server
+*/
+
+/*
+when instructor edit 
+  (change to front end)
+  change stateSelectedClass, replace respective element in stateArrayOfClasses
+  (change to back end)
+  cb_axios (....)
+
+*/
