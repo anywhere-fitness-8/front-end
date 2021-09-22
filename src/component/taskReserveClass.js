@@ -52,7 +52,7 @@ function CompTaskReserveClass(props) {
     set_stateArrayOfClasses([...list_of_classes]);
 
     //render all class intially
-    set_stateArrayOfRenderedClasses([...stateArrayOfClasses]);
+    set_stateArrayOfRenderedClasses([...list_of_classes]);
   }, []);
 
   //monitor change in stateSearchCriteria
