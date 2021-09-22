@@ -2,13 +2,14 @@ import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
 
+
 const Container = styled.div`
-  
-  /* border: 1px solid black; */
   height: 95vh;
   width: 80vw;
   margin: 2.5vh 10vw 2.5vh 10vw;
   padding: 0;
+  background-color: whitesmoke;
+  border-radius: 20px 20px 0 0;
 `;
 const Top = styled.div`
 
@@ -31,13 +32,18 @@ const MiddleRightImage = styled.img`
   float: left;
   border-radius: 13px;
 `
+
 const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 89%;
   width: 100%;
-  /* border: solid 1px red; */
   margin: 0;
   padding: 0;
 `;
+
 function PageHome(props) {
   return (
     <Container>

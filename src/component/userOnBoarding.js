@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
 
-
 const Container = styled.div`
 display: flex;
   
@@ -28,7 +27,7 @@ function CompUserOnboarding(props) {
   const history = useHistory();
 
   const onClick = () =>{
-    let path = `/profile`;
+    let path = `/login`;
     history.push(path)
 
   }
@@ -37,20 +36,17 @@ function CompUserOnboarding(props) {
 
   return (
     <Container>
-
-
       <div>
-        <h3>Walkthrough tutorial</h3>
+        <h3>Registration Successful!</h3>
+        <p>Walkthrough Tutorial</p>
 
         <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
-
-
 
         
         <div className="skip-button">
           <SkipButton onClick={onClick} >
           
-            Skip!
+            Skip to login!
             
           </SkipButton>
         

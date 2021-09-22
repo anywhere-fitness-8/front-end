@@ -1,10 +1,7 @@
 import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
-import CompTaskManageClass from "../component/taskManageClass";
-import CompListOfClass from "../component/listOfClass";
-import CompClassDetail from "../component/classDetail";
-import CompClassCard from "../component/classCard";
+import CompUserOnboarding from "../component/userOnBoarding";
 
 const Container = styled.div`
   height: 95vh;
@@ -23,22 +20,24 @@ const Footer = styled.footer`
   width: 100%;
 `;
 const Main = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 89%;
   width: 100%;
+  margin: 0;
+  padding: 0;
 `;
-function PageManageClass(props) {
+
+function PageOnboarding(props) {
   return (
     <Container>
       <Header>
         <CompHeader />
       </Header>
       <Main>
-        <h2>PageManageClass.js</h2>
-        <p>only Instructor can ues this page</p>
-        <CompTaskManageClass />
-        <CompListOfClass />
-        <CompClassDetail />
-        <CompClassCard />
+        <CompUserOnboarding />
       </Main>
       <Footer>
         <CompFooter />
@@ -47,4 +46,4 @@ function PageManageClass(props) {
   );
 }
 
-export default PageManageClass;
+export default PageOnboarding;

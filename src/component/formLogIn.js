@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import {
   loginFormSchema,
@@ -6,21 +8,31 @@ import {
   schema_validate_form,
 } from "../component/schema_validation";
 
-const Container = styled.div``;
+const Container = styled.div`
+padding-bottom: 3vh;
+`;
 const Form = styled.div``;
 const Label = styled.div``;
 const Input = styled.input``;
 const Button = styled.button``;
-const ValidationText = styled.p``;
-const Select = styled.select``;
-const Option = styled.option``;
+const ValidationText = styled.p`
+  color: red;
+`;
+
 
 function CompFormLogin(props) {
-  const INITIAL_STATE = { username: "", password: "", accounttype: "" };
+
+  console.log(localStorage.token)
+  const INITIAL_STATE = { 
+    username: "", 
+    password: ""};
+
+    const {push} = useHistory()
+
   const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateValidationBoolean, set_stateValidationBoolean] = useState(false);
-  const [stateValidationText, set_stateValidationText] =
-    useState(INITIAL_STATE);
+  const [stateValidationText, set_stateValidationText] = useState(INITIAL_STATE);
+
 
   const cb_onChange = (event) => {
     const { name, value } = event.target;
@@ -47,8 +59,19 @@ function CompFormLogin(props) {
 
   const cb_onSubmit = (event) => {
     //if validation pass
-    set_stateFormData(INITIAL_STATE);
-    set_stateValidationText(INITIAL_STATE);
+    // set_stateFormData(INITIAL_STATE);
+    // set_stateValidationText(INITIAL_STATE);
+    
+    event.preventDefault()
+
+    axios.post('https://anywhere-fitness-8.herokuapp.com/api/auth/login', stateFormData)
+      .then(res=>{
+        localStorage.setItem('Token', res.data.token)
+        push('/') 
+      })
+      .catch(err=>[
+        console.error(err)
+      ])
   };
 
   return (
@@ -63,11 +86,12 @@ function CompFormLogin(props) {
             name="username"
             value={stateFormData.username}
             onChange={cb_onChange}
-            placeholder="(enter username)"
+            placeholder="Must be 5 characters long"
             autoFocus
           />
         </Label>
         <ValidationText>{stateValidationText.username}</ValidationText>
+        
         {/* -------------------password input---------------------------- */}
         <Label>
           <b>Password : </b>
@@ -76,24 +100,12 @@ function CompFormLogin(props) {
             name="password"
             value={stateFormData.password}
             onChange={cb_onChange}
-            placeholder="(enter password)"
+            placeholder="Must be 5 characters long"
           />
         </Label>
         <ValidationText>{stateValidationText.password}</ValidationText>
-        {/* -------------------password input---------------------------- */}
-        <Label>
-          <b>Account Type : </b>
-          <Select
-            value={stateFormData.accounttype}
-            name="accounttype"
-            onChange={cb_onChange}
-          >
-            <Option value="">(Please select one)</Option>
-            <Option value="student">Student</Option>
-            <Option value="instructor">Instructor</Option>
-          </Select>
-        </Label>
-        <ValidationText>{stateValidationText.accounttype}</ValidationText>
+
+
         {/* -------------------submit button----------------------- */}
         <Button disabled={!stateValidationBoolean} onClick={cb_onSubmit}>
           Login
