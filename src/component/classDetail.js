@@ -75,12 +75,14 @@ function CompClassDetail({
       {input_object && <p>type: {input_object.type}</p>}
       {input_object && <p>location: {input_object.location}</p>}
       {input_object && <p>duration: {input_object.duration}</p>}
-      {stateArrayOfReservedClass.includes(input_object.class_id) ? (
+      {input_object &&
+      stateArrayOfReservedClass.includes(input_object.class_id) ? (
         <Span_Red>Class Reserved</Span_Red>
       ) : (
         <Span_Green>Want to reserve?</Span_Green>
       )}
-      {stateArrayOfReservedClass.includes(input_object.class_id) ? (
+      {input_object &&
+      stateArrayOfReservedClass.includes(input_object.class_id) ? (
         <button onClick={cb_OnCLick_Delete_Reserve}>Delete Reservation</button>
       ) : (
         <button onClick={cb_OnCLick_Reserve}>Reserve</button>
