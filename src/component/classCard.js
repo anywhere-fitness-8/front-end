@@ -7,30 +7,14 @@ const Container = styled.div`
   line-height: 1px;
 `;
 
-function CompClassCard(props) {
-  const [stateLoading, set_stateLoading] = useState(true);
-  const [stateData, set_stateData] = useState(null);
-
-  //run once
-  useEffect(() => {
-    if (props.input_object) {
-      set_stateData(props.input_object);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (stateData) {
-      set_stateLoading(false);
-    }
-  }, [stateData]);
-
+function CompClassCard({ input_object, set_stateSelectedClass }) {
   const cb_onClick = (event) => {
     // console.log("classCard.js - called cb_onClick");
     // event.stopPropagation();
     event.preventDefault();
     // debugger;
-    props.set_stateSelectedClass(null);
-    props.set_stateSelectedClass(stateData);
+    set_stateSelectedClass(null);
+    set_stateSelectedClass(input_object);
   };
 
   // console.log(props);
@@ -38,13 +22,13 @@ function CompClassCard(props) {
   return (
     <Container>
       <h3>CompClassCard.js</h3>
-      {stateLoading && <p>Loading</p>}
-      {!stateLoading && <p>class id: {stateData.class_id}</p>}
-      {!stateLoading && <p>name: {stateData.name}</p>}
-      {!stateLoading && <p>date: {stateData.date}</p>}
-      {!stateLoading && <p>type: {stateData.type}</p>}
-      {!stateLoading && <p>location: {stateData.location}</p>}
-      {!stateLoading && <p>duration: {stateData.duration}</p>}
+      {!input_object && <p>Loading</p>}
+      {input_object && <p>class id: {input_object.class_id}</p>}
+      {input_object && <p>name: {input_object.name}</p>}
+      {input_object && <p>date: {input_object.date}</p>}
+      {input_object && <p>type: {input_object.type}</p>}
+      {input_object && <p>location: {input_object.location}</p>}
+      {input_object && <p>duration: {input_object.duration}</p>}
       <button onClick={cb_onClick}>Select</button>
     </Container>
   );
