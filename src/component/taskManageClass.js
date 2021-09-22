@@ -9,7 +9,7 @@ import CompClassDetailEditable from "./classDetailEditable";
 import  axiosWithAuth  from '../utils/axiosWithAuth'
 
 const Container = styled.div`
-  height: 100%;
+  height: 90%;
 `;
 const DIV_Flex_Row = styled.div`
   display: flex;

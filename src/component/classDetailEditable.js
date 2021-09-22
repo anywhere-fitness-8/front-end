@@ -66,7 +66,7 @@ function CompClassDetailEditable({
       .put(`https://anywhere-fitness-8.herokuapp.com/api/classes/${id}`, stateValidationText)
       .then(res => {
         set_stateArrayOfClasses(res.data)
-        push('/manage')
+        set_stateSelectedClass(null)
       })
   };
 
