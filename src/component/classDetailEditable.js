@@ -181,7 +181,15 @@ function CompClassDetailEditable({
               name="intensityLevel"
               value={stateSelectedClass.intensityLevel}
               onChange={cb_onChange}
-              placeholder="(enter intensity level )"
+              placeholder="     <DIV_Right>
+              {stateSelectedClass ? (
+                <CompClassDetailEditable
+                  stateSelectedClass={stateSelectedClass}
+                  set_stateSelectedClass={set_stateSelectedClass}
+                  stateArrayOfClasses={stateArrayOfClasses}
+                  set_stateArrayOfClasses={set_stateArrayOfClasses}
+                />
+              ) : null}(enter intensity level )"
               disabled={stateEditBoolean}
             />
           </Label>
