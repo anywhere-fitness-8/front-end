@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axiosWithAuth from "../utils/axiosWithAuth";
+import { useParams, useHistory } from "react-router-dom";
 
 const Container = styled.div``;
 const Form = styled.form`
@@ -52,12 +54,21 @@ function CompClassDetailEditable({
   const [stateValidationText, set_stateValidationText] =
     useState(INITIAL_STATE);
 
+  const { id } = useParams();
+  const { push } = useHistory();
   const cb_onChange = (event) => {
     const { name, value } = event.target;
     set_stateSelectedClass({ ...stateSelectedClass, [name]: value });
   };
 
-  const helper_update_ClassObject_via_axios = () => {};
+  const helper_update_ClassObject_via_axios = () => {
+    axiosWithAuth()
+      .put(`https://anywhere-fitness-8.herokuapp.com/api/classes/${id}`, stateValidationText)
+      .then(res => {
+        set_stateArrayOfClasses(res.data)
+        set_stateSelectedClass(null)
+      })
+  };
 
   /*
     when edit button is click, the stateEditBoolean gets toggle to opposite state
@@ -92,9 +103,9 @@ function CompClassDetailEditable({
 
   return (
     <Container>
-      <Form id="profile_form">
+      <Form onSubmit={cb_onClick} id="profile_form">
         <Fieldset>
-          <Legend>Add Classes</Legend>
+          <Legend>Manage Classes</Legend>
           {/* -----------------class_id input------------------------------- */}
           <Label>
             <b>Class ID : </b>

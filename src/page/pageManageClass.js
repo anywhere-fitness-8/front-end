@@ -16,6 +16,7 @@ const Header = styled.header`
   width: 100%;
 `;
 const Footer = styled.footer`
+  margin-top: 10%;
   height: 10%;
   width: 100%;
 `;
