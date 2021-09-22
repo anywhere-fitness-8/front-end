@@ -12,9 +12,16 @@ const Container = styled.div`
 const DIV_Flex_Row = styled.div`
   display: flex;
   flex-direction: row;
+  height: 60%;
+`;
 
+const DIV_Left = styled.div`
+  width: 50%;
   overflow: scroll;
-  height: 70%;
+  height: 100%;
+`;
+const DIV_Right = styled.div`
+  width: 50%;
 `;
 
 function CompTaskReserveClass(props) {
@@ -129,17 +136,21 @@ function CompTaskReserveClass(props) {
       </p>
       <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
       <DIV_Flex_Row>
-        <CompListOfClasses
-          input_object={stateArrayOfRenderedClasses}
-          set_stateSelectedClass={set_stateSelectedClass}
-        />
-        {stateSelectedClass ? (
-          <CompClassDetail
-            input_object={stateSelectedClass}
-            stateArrayOfReservedClass={stateArrayOfReservedClass}
-            set_stateArrayOfReservedClass={set_stateArrayOfReservedClass}
+        <DIV_Left>
+          <CompListOfClasses
+            input_object={stateArrayOfRenderedClasses}
+            set_stateSelectedClass={set_stateSelectedClass}
           />
-        ) : null}
+        </DIV_Left>
+        <DIV_Right>
+          {stateSelectedClass ? (
+            <CompClassDetail
+              input_object={stateSelectedClass}
+              stateArrayOfReservedClass={stateArrayOfReservedClass}
+              set_stateArrayOfReservedClass={set_stateArrayOfReservedClass}
+            />
+          ) : null}
+        </DIV_Right>
       </DIV_Flex_Row>
     </Container>
   );

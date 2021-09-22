@@ -39,6 +39,7 @@ function CompClassCard(props) {
     <Container>
       <h3>CompClassCard.js</h3>
       {stateLoading && <p>Loading</p>}
+      {!stateLoading && <p>class id: {stateData.class_id}</p>}
       {!stateLoading && <p>name: {stateData.name}</p>}
       {!stateLoading && <p>date: {stateData.date}</p>}
       {!stateLoading && <p>type: {stateData.type}</p>}

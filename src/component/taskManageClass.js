@@ -4,8 +4,8 @@ import styled from "styled-components";
 import CompFormFilterClass from "./formFilterClass";
 import CompFormAddClass from "./formAddClass";
 import { list_of_classes } from "./sample_data";
-import CompListOfClasses from "./listOfClass";
-import CompClassDetail from "./classDetail";
+import CompClassCard from "./classCard";
+import CompClassDetailEditable from "./classDetailEditable";
 
 const Container = styled.div`
   height: 100%;
@@ -13,17 +13,29 @@ const Container = styled.div`
 const DIV_Flex_Row = styled.div`
   display: flex;
   flex-direction: row;
-  overflow: scroll;
   height: 60%;
+`;
+
+const DIV_Left = styled.div`
+  width: 50%;
+  overflow: scroll;
+  height: 100%;
+`;
+const DIV_Right = styled.div`
+  width: 50%;
 `;
 
 function CompTaskManageClass(props) {
   //--------------------------------------------------------
   // const [stateArrayOfClasses, set_stateArrayOfClasses] =
   // useState(list_of_classes);
-  const [stateArrayOfClasses, set_stateArrayOfClasses] =
-    useState(list_of_classes);
-  
+  const [stateArrayOfClasses, set_stateArrayOfClasses] = useState([]);
+  /*
+    stateArrayOfReservedClass store an array of class_id, which is key in classDetail object
+  */
+  const [stateArrayOfRenderedClassCard, set_stateArrayOfRenderedClassCard] =
+    useState([]);
+
   //---------------------------------------------------------------------
   //set_stateNewClass allow user to add a class
   const [stateNewClass, set_stateNewClass] = useState(null);
@@ -33,7 +45,11 @@ function CompTaskManageClass(props) {
   const [stateSelectedClass, set_stateSelectedClass] = useState(null);
 
   //event happens once after the component initially get render
-  useEffect(() => {}, []);
+  useEffect(() => {
+    set_stateArrayOfClasses([...list_of_classes]);
+
+    set_stateArrayOfRenderedClassCard([...stateArrayOfClasses]);
+  }, []);
 
   useEffect(() => {
     // stateSelectedClass &&
@@ -42,7 +58,8 @@ function CompTaskManageClass(props) {
 
   //monitor change in stateArrayOfClasses
   useEffect(() => {
-    // console.log("stateArrayOfClasses.length = ", stateArrayOfClasses.length);
+    //rerender list of ClassCard when stateArrayOfClasses change
+    set_stateArrayOfRenderedClassCard([...stateArrayOfClasses]);
   }, [stateArrayOfClasses]);
 
   //monitor change in stateNewClass
@@ -65,9 +82,14 @@ function CompTaskManageClass(props) {
       <h3>CompTaskManageClass.js</h3>
       <p>Length of stateArrayOfClasses is {stateArrayOfClasses.length}</p>
       <p>
+        Length of stateArrayOfRenderedClassCard is{" "}
+        {stateArrayOfRenderedClassCard.length}
+      </p>
+      <p>
         stateSearchCriteria ={" "}
         {stateSearchCriteria ? JSON.stringify(stateSearchCriteria) : "null"}
       </p>
+      stateArrayOfReservedClass
       <p>
         stateSelectedClass ={" "}
         {stateSelectedClass ? JSON.stringify(stateSelectedClass) : "null"}
@@ -75,20 +97,37 @@ function CompTaskManageClass(props) {
       <p>
         stateNewClass = {stateNewClass ? JSON.stringify(stateNewClass) : "null"}
       </p>
-
       <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
       <CompFormAddClass set_stateNewClass={set_stateNewClass} />
       <DIV_Flex_Row>
-        <CompListOfClasses
-          input_object={stateArrayOfClasses}
-          set_stateSelectedClass={set_stateSelectedClass}
-        />
-        {/* ?????????????????????????????????????????????????????????????????????? */}
-        {/* How to force CompClassDetail re-render when stateSelectedClass change? */}
-        {/* ?????????????????????????????????????????????????????????????????????? */}
-        {stateSelectedClass ? (
-          <CompClassDetail input_object={stateSelectedClass} />
-        ) : null}
+        <DIV_Left>
+          {Array.from(stateArrayOfRenderedClassCard).map((eachClass, index) => {
+            if (eachClass) {
+              return (
+                <CompClassCard
+                  input_object={eachClass}
+                  key={index}
+                  set_stateSelectedClass={set_stateSelectedClass}
+                />
+              );
+            } else {
+              return null;
+            }
+          })}
+        </DIV_Left>
+        <DIV_Right>
+          {/* ?????????????????????????????????????????????????????????????????????? */}
+          {/* How to force CompClassDetail re-render when stateSelectedClass change? */}
+          {/* ?????????????????????????????????????????????????????????????????????? */}
+          {stateSelectedClass ? (
+            <CompClassDetailEditable
+              stateSelectedClass={stateSelectedClass}
+              set_stateSelectedClass={set_stateSelectedClass}
+              stateArrayOfClasses={stateArrayOfClasses}
+              set_stateArrayOfClasses={set_stateArrayOfClasses}
+            />
+          ) : null}
+        </DIV_Right>
       </DIV_Flex_Row>
     </Container>
   );

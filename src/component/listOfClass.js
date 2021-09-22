@@ -5,21 +5,21 @@ import CompClassCard from "./classCard";
 const Container = styled.div`
   border: 1px solid green;
   background-color: gray;
-  width: 45%;
+  width: 100%;
   overflow: scroll;
 `;
 
-function CompListOfClasses(props) {
+function CompListOfClasses({ input_object, set_stateSelectedClass }) {
   return (
     <Container>
-      {props.input_object &&
-        Array.from(props.input_object).map((eachClass, index) => {
+      {input_object &&
+        Array.from(input_object).map((eachClass, index) => {
           if (eachClass) {
             return (
               <CompClassCard
                 input_object={eachClass}
                 key={index}
-                set_stateSelectedClass={props.set_stateSelectedClass}
+                set_stateSelectedClass={set_stateSelectedClass}
               />
             );
           } else {

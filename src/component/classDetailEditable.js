@@ -1,104 +1,225 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
-  border: 10px solid black;
-  width: 55%;
+const Container = styled.div``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  border: solid 1px black;
+  width: 100%;
+`;
+const Label = styled.label`
+  display: flex;
+  flex-direction: row;
+`;
+const Input = styled.input``;
+const Button = styled.button`
+  width: 100%;
+`;
+const ValidationText = styled.p``;
+const Legend = styled.legend`
+  /* border: 1px solid red; */
+`;
+const Fieldset = styled.fieldset`
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
 `;
 
-const Span_Green = styled.span`
-  background-color: green;
-`;
-
-const Span_Red = styled.span`
-  background-color: red;
-`;
-function CompClassDetail({
-  input_object,
-  stateArrayOfReservedClass,
-  set_stateArrayOfReservedClass,
+function CompClassDetailEditable({
+  stateSelectedClass,
+  set_stateSelectedClass,
+  stateArrayOfClasses,
+  set_stateArrayOfClasses,
 }) {
-  /*
-    ??????????????????????????????????????????????????????????????
-    Unit 3 - helper_update_reservation_per_user to post axios call
-    ??????????????????????????????????????????????????????????????
-  */
-  const helper_update_reservation_per_user = () => {};
+  const INITIAL_STATE = {
+    name: "",
+    type: "",
+    date: "",
+    startTime: "",
+    duration: "",
+    intensityLevel: "",
+    location: "",
+    registeredAttendees: 0,
+    maxClassSize: "",
+  };
+  const [stateReturnObject, set_stateReturnObject] = useState(null);
+  // const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
+  const [stateEditBoolean, set_stateEditBoolean] = useState(true);
+  const [stateValidationBoolean, set_stateValidationBoolean] = useState(true);
+  const [stateValidationText, set_stateValidationText] =
+    useState(INITIAL_STATE);
 
-  const cb_OnCLick_Reserve = () => {
-    /*
-      when a user click reserve,
-      _add the class_id to stateArrayOfReservedClass
-      _update the reservation status to the backend using helper_update_reservation_per_user
-    */
-
-    //_add the class_id to stateArrayOfReservedClass
-    input_object &&
-      set_stateArrayOfReservedClass([
-        ...stateArrayOfReservedClass,
-        input_object.class_id,
-      ]);
-
-    //_update the reservation status to the backend using helper_update_reservation_per_user
-    //??????????????????????????????????
-    helper_update_reservation_per_user();
-    //??????????????????????????????????
+  const cb_onChange = (event) => {
+    const { name, value } = event.target;
+    set_stateSelectedClass({ ...stateSelectedClass, [name]: value });
   };
 
-  const cb_OnCLick_Delete_Reserve = () => {
-    /*
-      when a user click "Delete Reservation",
-      _delete the class_id from stateArrayOfReservedClass
-      _update the reservation status to the backend using helper_update_reservation_per_user
-    */
+  const helper_update_ClassObject_via_axios = () => {};
 
-    //_delete the class_id from stateArrayOfReservedClass
-    set_stateArrayOfReservedClass(
-      stateArrayOfReservedClass.filter((each) => {
-        return each !== input_object.class_id;
-      })
-    );
+  /*
+    when edit button is click, the stateEditBoolean gets toggle to opposite state
 
-    //_update the reservation status to the backend using helper_update_reservation_per_user
-    //??????????????????????????????????
-    helper_update_reservation_per_user();
-    //??????????????????????????????????
+    when  update button is click
+    
+    _the new ClassDetail get pushed to the backend
+  */
+  const cb_onClick = (event) => {
+    event.preventDefault();
+
+    //when stateEditBoolean === false, user can edit the class
+    if (stateEditBoolean === false) {
+      // _the new ClassDetail get pushed to the backend
+      helper_update_ClassObject_via_axios();
+
+      // _the new ClassDetail get update in the set_stateArrayOfClasses
+      const temp_array = stateArrayOfClasses.map((eachClass) => {
+        if (eachClass.class_id === stateSelectedClass.class_id) {
+          return stateSelectedClass;
+        } else {
+          return eachClass;
+        }
+      });
+
+      set_stateArrayOfClasses(temp_array);
+    }
+
+    //toggle stateEditBoolean
+    set_stateEditBoolean(!stateEditBoolean);
   };
 
   return (
     <Container>
-      <h3>CompClassDetail.js</h3>
-      {/* {stateLoading && <p>Loading</p>} */}class_id
-      {input_object && <p>class id: {input_object.class_id}</p>}
-      {input_object && <p>name: {input_object.name}</p>}
-      {input_object && <p>date: {input_object.date}</p>}
-      {input_object && <p>type: {input_object.type}</p>}
-      {input_object && <p>location: {input_object.location}</p>}
-      {input_object && <p>duration: {input_object.duration}</p>}
-      {input_object &&
-      stateArrayOfReservedClass.includes(input_object.class_id) ? (
-        <Span_Red>Class Reserved</Span_Red>
-      ) : (
-        <Span_Green>Want to reserve?</Span_Green>
-      )}
-      {input_object &&
-      stateArrayOfReservedClass.includes(input_object.class_id) ? (
-        <button onClick={cb_OnCLick_Delete_Reserve}>Delete Reservation</button>
-      ) : (
-        <button onClick={cb_OnCLick_Reserve}>Reserve</button>
-      )}
+      <Form id="profile_form">
+        <Fieldset>
+          <Legend>Add Classes</Legend>
+          {/* -----------------class_id input------------------------------- */}
+          <Label>
+            <b>Class ID : </b>
+            <Input
+              type="text"
+              name="class_id"
+              value={stateSelectedClass.class_id}
+              onChange={cb_onChange}
+              placeholder="(enter class name)"
+              disabled={true}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.class_id}</ValidationText>
+          {/* -----------------name input------------------------------- */}
+          <Label>
+            <b>Name : </b>
+            <Input
+              type="text"
+              name="name"
+              value={stateSelectedClass.name}
+              onChange={cb_onChange}
+              placeholder="(enter class name)"
+              disabled={stateEditBoolean}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.name}</ValidationText>
+          {/* -----------------type input------------------------------- */}
+          <Label>
+            <b>type : </b>
+            <Input
+              name="type"
+              value={stateSelectedClass.type}
+              onChange={cb_onChange}
+              placeholder="(enter type)"
+              disabled={stateEditBoolean}
+            />
+          </Label>
+
+          <ValidationText>{stateValidationText.type}</ValidationText>
+          {/* -----------------date input------------------------------- */}
+          <Label>
+            <b>date : </b>
+            <Input
+              type="date"
+              name="date"
+              value={stateSelectedClass.date}
+              onChange={cb_onChange}
+              disabled={stateEditBoolean}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.date}</ValidationText>
+          {/* -------------------startTime input---------------------------- */}
+          <Label>
+            <b>start time : </b>
+            <Input
+              type="time"
+              name="startTime"
+              value={stateSelectedClass.startTime}
+              onChange={cb_onChange}
+              disabled={stateEditBoolean}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.startTime}</ValidationText>
+
+          {/* -----------------duration input------------------------------- */}
+          <Label>
+            <b>duration : </b>
+            <Input
+              type="number"
+              name="duration"
+              value={stateSelectedClass.duration}
+              onChange={cb_onChange}
+              placeholder="(enter xx minutes)"
+              disabled={stateEditBoolean}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.duration}</ValidationText>
+
+          {/* -----------------intensityLevel input------------------------------- */}
+          <Label>
+            <b>intensity level : </b>
+            <Input
+              type="text"
+              name="intensityLevel"
+              value={stateSelectedClass.intensityLevel}
+              onChange={cb_onChange}
+              placeholder="(enter intensity level )"
+              disabled={stateEditBoolean}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.intensityLevel}</ValidationText>
+          {/* -----------------location input------------------------------- */}
+          <Label>
+            <b>location : </b>
+            <Input
+              name="location"
+              value={stateSelectedClass.location}
+              onChange={cb_onChange}
+              placeholder="(enter location)"
+              disabled={stateEditBoolean}
+            />
+          </Label>
+
+          <ValidationText>{stateValidationText.location}</ValidationText>
+          {/* -----------------maxClassSize input------------------------------- */}
+          <Label>
+            <b>max class size : </b>
+            <Input
+              type="number"
+              name="maxClassSize"
+              value={stateSelectedClass.maxClassSize}
+              onChange={cb_onChange}
+              placeholder="(enter a number )"
+              disabled={stateEditBoolean}
+            />
+          </Label>
+          <ValidationText>{stateValidationText.maxClassSize}</ValidationText>
+          <Button disabled={!stateValidationBoolean} onClick={cb_onClick}>
+            {stateEditBoolean ? "Edit" : "Update"}
+          </Button>
+        </Fieldset>
+        {/* -------------------update button----------------------- */}
+      </Form>
     </Container>
   );
 }
 
-export default CompClassDetail;
-
-/*
-
-stateReservationStatus
-
-stateArrayOfReservedClass={stateArrayOfReservedClass}
-
-set_stateArrayOfReservedClass={set_stateArrayOfReservedClass}
-
-*/
+export default CompClassDetailEditable;
