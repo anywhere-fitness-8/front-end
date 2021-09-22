@@ -6,6 +6,7 @@ import CompFormAddClass from "./formAddClass";
 import { list_of_classes } from "./sample_data";
 import CompClassCard from "./classCard";
 import CompClassDetailEditable from "./classDetailEditable";
+import  axiosWithAuth  from '../utils/axiosWithAuth'
 
 const Container = styled.div`
   height: 100%;
