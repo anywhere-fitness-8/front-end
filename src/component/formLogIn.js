@@ -11,7 +11,7 @@ import {
 const Container = styled.div`
 padding-bottom: 3vh;
 `;
-const Form = styled.div``;
+const Form = styled.form``;
 const Label = styled.div``;
 const Input = styled.input``;
 const Button = styled.button``;
@@ -58,15 +58,11 @@ function CompFormLogin(props) {
   }, [stateFormData]);
 
   const cb_onSubmit = (event) => {
-    //if validation pass
-    // set_stateFormData(INITIAL_STATE);
-    // set_stateValidationText(INITIAL_STATE);
-    
     event.preventDefault()
 
     axios.post('https://anywhere-fitness-8.herokuapp.com/api/auth/login', stateFormData)
       .then(res=>{
-        localStorage.setItem('Token', res.data.token)
+        localStorage.setItem('token', res.data.token)
         push('/') 
       })
       .catch(err=>[
@@ -77,7 +73,7 @@ function CompFormLogin(props) {
   return (
     <Container>
       <h3>CompFormLogin.js</h3>
-      <Form>
+      <Form onSubmit={cb_onSubmit}>
         {/* -----------------username input------------------------------- */}
         <Label>
           <b>Username : </b>
@@ -107,7 +103,7 @@ function CompFormLogin(props) {
 
 
         {/* -------------------submit button----------------------- */}
-        <Button disabled={!stateValidationBoolean} onClick={cb_onSubmit}>
+        <Button disabled={!stateValidationBoolean}>
           Login
         </Button>
       </Form>
