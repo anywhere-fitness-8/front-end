@@ -4,7 +4,7 @@ import CompFooter from "../component/footer";
 
 
 const Container = styled.div`
-  height: 95vh;
+  height: 106vh;
   width: 80vw;
   margin: 2.5vh 10vw 2.5vh 10vw;
   padding: 0;
@@ -38,10 +38,9 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 89%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+
+  margin: auto;
+  padding: 3vh 1vw;
 `;
 
 function PageHome(props) {

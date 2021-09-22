@@ -10,16 +10,8 @@ const Logout = (props) =>{
     const { push } = useHistory()
     
     useEffect(()=>{
-
-        axiosWithAuth()
-            .post('/auth/logout')
-            .then(res =>{
-                localStorage.removeItem('Token');
-                push('/login')
-            })
-            .catch(err=>{
-                console.error(err)
-            })
+        localStorage.removeItem('token');
+        push('/login')
     }, [])
     return(<div>
         User Logged Out

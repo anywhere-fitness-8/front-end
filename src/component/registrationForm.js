@@ -9,7 +9,7 @@ import {
 } from "./schema_validation";
 
 const Container = styled.div``;
-const Form = styled.div``;
+const Form = styled.form``;
 const Label = styled.div``;
 const Input = styled.input``;
 const Button = styled.button``;
@@ -91,7 +91,7 @@ const RegistrationForm = () => {
   return (
     <Container>
       <h3>RegistrationForm.js</h3>
-      <Form>
+      <Form onSubmit={cb_onSubmit}>
         {/* -----------------username input------------------------------- */}
         <Label>
           <b>Username : </b>
@@ -152,7 +152,7 @@ const RegistrationForm = () => {
         <ValidationText>{stateValidationText.role_id}</ValidationText>
 
         {/* -------------------submit button----------------------- */}
-        <Button disabled={!stateValidationBoolean} onClick={cb_onSubmit}>
+        <Button disabled={!stateValidationBoolean}>
           Register
         </Button>
       </Form>

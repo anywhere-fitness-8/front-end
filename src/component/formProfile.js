@@ -8,7 +8,7 @@ import {
 } from "../component/schema_validation";
 
 const Container = styled.div``;
-const Form = styled.div``;
+const Form = styled.form``;
 const Label = styled.div``;
 const Input = styled.input``;
 const Button = styled.button``;
@@ -65,7 +65,7 @@ function CompFormProfile(props) {
 
   return (
     <Container>
-      <Form id="profile_form">
+      <Form id="profile_form" onSubmit={cb_onUpdate}>
         <Fieldset>
           <Legend>UserName and Password</Legend>
           {/* -----------------username input------------------------------- */}
@@ -182,7 +182,7 @@ function CompFormProfile(props) {
           </Label>
           <ValidationText>{stateValidationText.zipcode}</ValidationText>
         
-          <Button disabled={!stateValidationBoolean} onClick={cb_onUpdate}>
+          <Button disabled={!stateValidationBoolean}>
             Update Profile
           </Button>
         </Fieldset>
