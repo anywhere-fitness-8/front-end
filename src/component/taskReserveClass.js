@@ -28,6 +28,9 @@ function CompTaskReserveClass(props) {
 
   //event happens once after the component initially get render
   useEffect(() => {
+    //====================================================
+    //Unit 3 - retrieve a list of classes from the server
+    //====================================================
     set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
   }, []);
 
@@ -132,5 +135,20 @@ name ===
 - `class type`===
 - `intensity level`
 - `class location`===
+
+*/
+
+/*
+when instructor click add
+_add new class to stateArrayOfClass
+_unit post the newClassState to the server
+*/
+
+/*
+when instructor edit 
+  (change to front end)
+  change stateSelectedClass, replace respective element in stateArrayOfClasses
+  (change to back end)
+  cb_axios (....)
 
 */

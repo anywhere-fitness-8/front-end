@@ -9,6 +9,10 @@ const Container = styled.div`
 function CompClassDetail(props) {
   const [stateLoading, set_stateLoading] = useState(false);
   const { input_object } = props;
+
+  //for Unit 3 to post axios call
+  const cb_OnCLick_Reserve = () => {};
+
   return (
     <Container>
       <h3>CompClassDetail.js</h3>
@@ -18,6 +22,7 @@ function CompClassDetail(props) {
       {input_object && <p>type: {input_object.type}</p>}
       {input_object && <p>location: {input_object.location}</p>}
       {input_object && <p>duration: {input_object.duration}</p>}
+      <button onClick={cb_OnCLick_Reserve}>Reserve</button>
     </Container>
   );
 }
