@@ -29,6 +29,12 @@ function CompTaskReserveClass(props) {
   const [stateArrayOfReservedClass, set_stateArrayOfReservedClass] = useState(
     []
   );
+
+  /*
+    stateArrayOfRenderedClasses store an array of classDetail object 
+  */
+  const [stateArrayOfRenderedClasses, set_stateArrayOfRenderedClasses] =
+    useState(list_of_classes);
   //---------------------------------------------------------------------
   //set_stateSearchCriteria allow user to search class
   const [stateSearchCriteria, set_stateSearchCriteria] = useState(null);
@@ -37,10 +43,17 @@ function CompTaskReserveClass(props) {
 
   //event happens once after the component initially get render
   useEffect(() => {
-    //====================================================
+    //??????????????????????????????????????????????????????
     //Unit 3 - retrieve a list of classes from the server
-    //====================================================
+    //??????????????????????????????????????????????????????
     set_stateArrayOfClasses([...stateArrayOfClasses, ...list_of_classes]);
+
+    //????????????????????????????????????????????????????????????????
+    // //render all class intially
+    // set_stateArrayOfRenderedClasses([
+    //   ...stateArrayOfRenderedClasses,
+    //   ...stateArrayOfClasses,
+    // ]);
   }, []);
 
   //monitor change in stateSelectedClass
@@ -55,18 +68,51 @@ function CompTaskReserveClass(props) {
   }, [stateArrayOfClasses]);
 
   //monitor change in stateSearchCriteria
-  useEffect(() => {
-    //????????????????????????????????????????????????????????
-    //what happen after a new search criteria gets detected?
-    //????????????????????????????????????????????????????????
-    if (stateSearchCriteria) {
-    }
-  }, [stateSearchCriteria]);
+  useEffect(
+    () => {
+      const helper_compare = (original, compareTo) => {
+        if (compareTo === "") {
+          return true;
+        } else {
+          return original.includes(compareTo);
+        }
+      };
+
+      //????????????????????????????????????????????????????????
+      //what happen after a new search criteria gets detected?
+      //????????????????????????????????????????????????????????
+      if (stateSearchCriteria) {
+        const temp_array = stateArrayOfClasses.filter((eachClass) => {
+          if (
+            // eachClass.name.includes(stateSearchCriteria.name) &&
+            // eachClass.startTime.includes(stateSearchCriteria.time) &&
+            // eachClass.date.includes(stateSearchCriteria.date) &&
+            // eachClass.duration.includes(stateSearchCriteria.duration) &&
+            // eachClass.type.includes(stateSearchCriteria.type) &&
+            // eachClass.intensityLevel.includes(stateSearchCriteria.intensityLevel) &&
+            helper_compare(eachClass.location, stateSearchCriteria.location)
+          ) {
+            return eachClass;
+          } //end if
+
+          //"tom".include("") - return false
+        });
+
+        set_stateArrayOfRenderedClasses(temp_array);
+      } //end if
+    }, //end function
+    [stateSearchCriteria]
+  );
 
   return (
     <Container>
       <h3>CompTaskManageClass.js</h3>
       <p>Length of stateArrayOfClasses is {stateArrayOfClasses.length}</p>
+      <p>
+        Length of stateArrayOfRenderedClasses is{" "}
+        {stateArrayOfRenderedClasses.length}
+      </p>
+      stateArrayOfRenderedClasses
       <p>
         stateSearchCriteria ={" "}
         {stateSearchCriteria ? JSON.stringify(stateSearchCriteria) : "null"}
@@ -75,19 +121,16 @@ function CompTaskReserveClass(props) {
         stateSelectedClass ={" "}
         {stateSelectedClass ? JSON.stringify(stateSelectedClass) : "null"}
       </p>
-
       <p>
         stateArrayOfReservedClass ={" "}
         {stateArrayOfReservedClass
           ? JSON.stringify(stateArrayOfReservedClass)
           : "null"}
       </p>
-
       <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
-
       <DIV_Flex_Row>
         <CompListOfClasses
-          input_object={stateArrayOfClasses}
+          input_object={stateArrayOfRenderedClasses}
           set_stateSelectedClass={set_stateSelectedClass}
         />
         {stateSelectedClass ? (
