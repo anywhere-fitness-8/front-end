@@ -12,18 +12,18 @@ const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 `;
-const UL = styled.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+// const UL = styled.ul`
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
   
-`;
+// `;
 
-const LI = styled.li`
-  text-decoration: none;
+// const LI = styled.li`
+//   text-decoration: none;
   
-`;
+// `;
 
 const linkStyle = {
   textDecoration:'none',
@@ -40,13 +40,13 @@ function CompNavigationBar(props) {
 
           <Link to="/" style={linkStyle}>Home</Link>{" "}
 
-          <Link to="/login" style={linkStyle}>Login</Link>{" "}
-
-          <Link to="/profile" style={linkStyle}>Profile</Link>{" "}
-
           <Link to="/reserve" style={linkStyle}>Reserve Class</Link>{" "}
 
           <Link to="/manage" style={linkStyle}>Manage Class</Link>{" "}
+
+          {/* <Link to="/profile" style={linkStyle}>Profile</Link>{" "} */}
+
+          <Link to={localStorage.getItem('token') === null? '/Login' : '/profile'} style={linkStyle}>{localStorage.getItem('token') === null? 'Login' : 'Profile'}</Link>{" "}
 
     </Container>
   );

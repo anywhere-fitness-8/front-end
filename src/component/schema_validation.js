@@ -5,40 +5,40 @@ export const loginFormSchema = yup.object().shape({
   username: yup
     .string()
     .trim()
-    .required("username is required")
-    .min(5, "username must be at least five alphanumeric"),
+    .required("Username is required")
+    .min(5, "Username must be at least five characters long"),
   password: yup
     .string()
-    .required("password is required")
-    .min(5, "password must be at least 5 alphanumeric"),
-  accounttype: yup
-    .string()
-    .required("select an account type")
-    .notOneOf([""])
-    .oneOf(["student", "instructor"]),
+    .required("Password is required")
+    .min(5, "Password must be at least five characters long"),
+  // accounttype: yup
+  //   .string()
+  //   .required("select an account type")
+  //   .notOneOf([""])
+  //   .oneOf(["student", "instructor"]),
 });
 
 export const profileFormSchema = yup.object().shape({
   username: yup
     .string()
     .trim()
-    .required("username is required")
-    .min(5, "username must be at least five alphanumeric"),
+    .required("Username is required")
+    .min(5, "Username must be at least five characters long"),
   password: yup
     .string()
-    .required("password is required")
-    .min(5, "password must be at least 5 alphanumeric"),
-  name: yup.string().required("name is required"),
-  email: yup.string().required("email is required"),
-  birthdate: yup.string().required("birthdatate is required"),
-  address: yup.string().required("address is required"),
-  city: yup.string().required("city is required"),
-  state: yup.string().required("state is required"),
+    .required("Password is required")
+    .min(5, "Password must be at least five characters long"),
+  name: yup.string().required("Name is required"),
+  email: yup.string().required("E-mail is required"),
+  birthdate: yup.string().required("Birthdate is required"),
+  address: yup.string().required("Address is required"),
+  city: yup.string().required("City is required"),
+  state: yup.string().required("State is required"),
   zipcode: yup
     .string()
-    .required("zipcode is required")
-    .max(5, "max length of zipcode is 5 number")
-    .min(5, "min length of zipcode is 5 number"),
+    .required("Zipcode is required")
+    .max(5, "Max length of zipcode is 5 number")
+    .min(5, "Min length of zipcode is 5 number"),
 });
 
 export const schema_validate_input = (

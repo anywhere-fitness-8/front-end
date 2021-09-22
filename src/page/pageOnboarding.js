@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
-
+import CompUserOnboarding from "../component/userOnBoarding";
 
 const Container = styled.div`
   height: 95vh;
@@ -30,14 +30,14 @@ const Main = styled.main`
   padding: 0;
 `;
 
-function PageHome(props) {
+function PageOnboarding(props) {
   return (
     <Container>
       <Header>
         <CompHeader />
       </Header>
       <Main>
-        <h2>Home Page</h2>
+        <CompUserOnboarding />
       </Main>
       <Footer>
         <CompFooter />
@@ -46,4 +46,4 @@ function PageHome(props) {
   );
 }
 
-export default PageHome;
+export default PageOnboarding;

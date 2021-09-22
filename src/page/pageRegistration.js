@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
+import RegistrationForm from "../component/registrationForm";
 
 
 const Container = styled.div`
@@ -14,6 +15,7 @@ const Container = styled.div`
 const Header = styled.header`
   height: 5%;
   width: 100%;
+  
 `;
 const Footer = styled.footer`
   height: 10%;
@@ -30,14 +32,22 @@ const Main = styled.main`
   padding: 0;
 `;
 
-function PageHome(props) {
+const Form = styled.main`
+  background-color: lightgray;
+  padding: 6vh 5vw;
+  border-radius: 20px;
+`;
+
+function PageRegister(props) {
   return (
     <Container>
       <Header>
         <CompHeader />
       </Header>
       <Main>
-        <h2>Home Page</h2>
+      <Form>
+          <RegistrationForm />  
+        </Form>
       </Main>
       <Footer>
         <CompFooter />
@@ -46,4 +56,4 @@ function PageHome(props) {
   );
 }
 
-export default PageHome;
+export default PageRegister;
