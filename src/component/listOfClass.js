@@ -6,12 +6,14 @@ const Container = styled.div`
   border: 1px solid green;
   background-color: gray;
   width: 100%;
+  height: 100%;
   overflow: scroll;
 `;
 
 function CompListOfClasses({ input_object, set_stateSelectedClass }) {
   return (
     <Container>
+      {!input_object && <p>(loading...)</p>}
       {input_object &&
         Array.from(input_object).map((eachClass, index) => {
           if (eachClass) {
