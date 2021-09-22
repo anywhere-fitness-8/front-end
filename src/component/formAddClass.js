@@ -53,7 +53,7 @@ function CompFormAddClass({ set_stateNewClass }) {
   const cb_onAdd = (event) => {
     event.preventDefault();
     //if validation pass
-    set_stateReturnObject(stateFormData);
+    set_stateReturnObject({ ...stateFormData, class_id: Date.now() });
   };
 
   useEffect(() => {
