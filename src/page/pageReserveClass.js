@@ -2,9 +2,6 @@ import styled from "styled-components";
 import CompHeader from "../component/header";
 import CompFooter from "../component/footer";
 import CompTaskReserveClass from "../component/taskReserveClass";
-import CompListOfClass from "../component/listOfClass";
-import CompClassDetail from "../component/classDetail";
-import CompClassCard from "../component/classCard";
 
 const Container = styled.div`
   border: 1px solid black;

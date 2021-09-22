@@ -19,7 +19,16 @@ const DIV_Flex_Row = styled.div`
 
 function CompTaskReserveClass(props) {
   //--------------------------------------------------------
+  /*
+    stateArrayOfClasses store an array of classDetail object
+  */
   const [stateArrayOfClasses, set_stateArrayOfClasses] = useState([]);
+  /*
+    stateArrayOfReservedClass store an array of class_id, which is key in classDetail object
+  */
+  const [stateArrayOfReservedClass, set_stateArrayOfReservedClass] = useState(
+    []
+  );
   //---------------------------------------------------------------------
   //set_stateSearchCriteria allow user to search class
   const [stateSearchCriteria, set_stateSearchCriteria] = useState(null);
@@ -67,6 +76,13 @@ function CompTaskReserveClass(props) {
         {stateSelectedClass ? JSON.stringify(stateSelectedClass) : "null"}
       </p>
 
+      <p>
+        stateArrayOfReservedClass ={" "}
+        {stateArrayOfReservedClass
+          ? JSON.stringify(stateArrayOfReservedClass)
+          : "null"}
+      </p>
+
       <CompFormFilterClass set_stateSearchCriteria={set_stateSearchCriteria} />
 
       <DIV_Flex_Row>
@@ -75,7 +91,11 @@ function CompTaskReserveClass(props) {
           set_stateSelectedClass={set_stateSelectedClass}
         />
         {stateSelectedClass ? (
-          <CompClassDetail input_object={stateSelectedClass} />
+          <CompClassDetail
+            input_object={stateSelectedClass}
+            stateArrayOfReservedClass={stateArrayOfReservedClass}
+            set_stateArrayOfReservedClass={set_stateArrayOfReservedClass}
+          />
         ) : null}
       </DIV_Flex_Row>
     </Container>

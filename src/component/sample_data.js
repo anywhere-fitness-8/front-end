@@ -1,5 +1,6 @@
 export const list_of_classes = [
   {
+    class_id: 1,
     date: "2021-09-07",
     duration: "1",
     intensityLevel: "low",
@@ -11,6 +12,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 2,
     date: "2021-08-30",
     duration: "2",
     intensityLevel: "low",
@@ -22,6 +24,7 @@ export const list_of_classes = [
     type: "type a",
   },
   {
+    class_id: 3,
     date: "2021-09-07",
     duration: "3",
     intensityLevel: "low",
@@ -33,6 +36,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 4,
     date: "2021-09-07",
     duration: "4",
     intensityLevel: "low",
@@ -44,6 +48,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 5,
     date: "2021-09-07",
     duration: "5",
     intensityLevel: "low",
@@ -55,6 +60,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 10,
     date: "2021-09-07",
     duration: "10",
     intensityLevel: "low",
@@ -66,6 +72,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 20,
     date: "2021-08-30",
     duration: "20",
     intensityLevel: "low",
@@ -77,6 +84,7 @@ export const list_of_classes = [
     type: "type a",
   },
   {
+    class_id: 30,
     date: "2021-09-07",
     duration: "30",
     intensityLevel: "low",
@@ -88,6 +96,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 40,
     date: "2021-09-07",
     duration: "40",
     intensityLevel: "low",
@@ -99,6 +108,7 @@ export const list_of_classes = [
     type: "type b",
   },
   {
+    class_id: 50,
     date: "2021-09-07",
     duration: "50",
     intensityLevel: "low",
