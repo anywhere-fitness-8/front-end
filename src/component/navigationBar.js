@@ -40,7 +40,7 @@ function CompNavigationBar(props) {
 
           <Link to="/" style={linkStyle}>Home</Link>{" "}
 
-          <Link to="/login" style={linkStyle}>Login</Link>
+          {/* <Link to="/login" style={linkStyle}>Login</Link> */}
 
           <Link to="/reserve" style={linkStyle}>Reserve Class</Link>{" "}
 

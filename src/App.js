@@ -12,6 +12,7 @@ import PageOnboarding from "./page/pageOnboarding";
 import CompTaskManageClass from "./component/taskManageClass";
 import PrivateRoute from "./component/PrivateRoute";
 import CompTaskReserveClass from "./component/taskReserveClass";
+import CompFormProfile from "./component/formProfile";
 
 function App() {
   return (
@@ -27,13 +28,9 @@ function App() {
           <PageLogIn />
         </Route>
         <Route path='/logout' component={Logout}></Route>
-        <Route path="/profile">
-          <PageProfile />
-        </Route>
+        <PrivateRoute path="/profile" component={CompFormProfile}/>
         <PrivateRoute path="/reserve" component={CompTaskReserveClass}/>
-        <PrivateRoute path="/manage" component={CompTaskManageClass}/>
-          <PageManageClass />
-        
+        <PrivateRoute path="/manage" component={CompTaskManageClass}/>        
         <Route path='/onboarding'>
           <PageOnboarding />
         </Route>
