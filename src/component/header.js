@@ -9,7 +9,7 @@ const Container = styled.div`
   margin: 0;
 `;
 const Left = styled.div`
-display: flex;
+  display: flex;
   width: 10%;
   height: 100%;
   background-color: darkgray;
