@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div``;
 const Form = styled.form`
@@ -37,36 +37,49 @@ function CompClassDetailEditable({
   set_stateArrayOfClasses,
 }) {
   const INITIAL_STATE = {
-    name: "",
+    class_name: "",
     type: "",
-    date: "",
+    instructor_id: 0,
     startTime: "",
-    duration: "",
-    intensityLevel: "",
+    duration: 0,
+    intensity: 0,
     location: "",
-    registeredAttendees: 0,
-    maxClassSize: "",
+    size: 0,
+    registered_clients: 0,
   };
-  const [stateReturnObject, set_stateReturnObject] = useState(null);
-  // const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
+
+  const [stateReturnObject, set_stateReturnObject] = useState({});
+  const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateEditBoolean, set_stateEditBoolean] = useState(true);
   const [stateValidationBoolean, set_stateValidationBoolean] = useState(true);
   const [stateValidationText, set_stateValidationText] =
     useState(INITIAL_STATE);
 
   const { id } = useParams();
-  const { push } = useHistory();
+  
   const cb_onChange = (event) => {
-    const { name, value } = event.target;
-    set_stateSelectedClass({ ...stateSelectedClass, [name]: value });
+     const { name, value } = event.target;
+     set_stateSelectedClass({ ...stateSelectedClass, [name]: value });
+    
+
   };
 
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .get(`https://anywhere-fitness-8.herokuapp.com/api/classes/`)
+  //     .then(res => {
+  //       set_stateSelectedClass(res.data)
+      
+        
+  //     })
+  // },[])
   const helper_update_ClassObject_via_axios = () => {
     axiosWithAuth()
-      .put(`https://anywhere-fitness-8.herokuapp.com/api/classes/${id}`, stateValidationText)
+      .put(`https://anywhere-fitness-8.herokuapp.com/api/classes/${id}`, stateSelectedClass )
       .then(res => {
-        set_stateArrayOfClasses(res.data)
-        set_stateSelectedClass(null)
+        console.log(res)
+        set_stateReturnObject(res.data)
+      
       })
   };
 
@@ -107,7 +120,7 @@ function CompClassDetailEditable({
         <Fieldset>
           <Legend>Manage Classes</Legend>
           {/* -----------------class_id input------------------------------- */}
-          <Label>
+           <Label>
             <b>Class ID : </b>
             <Input
               type="text"
@@ -118,14 +131,14 @@ function CompClassDetailEditable({
               disabled={true}
             />
           </Label>
-          <ValidationText>{stateValidationText.class_id}</ValidationText>
+          <ValidationText>{stateValidationText.class_id}</ValidationText> 
           {/* -----------------name input------------------------------- */}
           <Label>
             <b>Name : </b>
             <Input
               type="text"
-              name="name"
-              value={stateSelectedClass.name}
+              name="class_name"
+              value={stateSelectedClass.class_name}
               onChange={cb_onChange}
               placeholder="(enter class name)"
               disabled={stateEditBoolean}
@@ -137,6 +150,7 @@ function CompClassDetailEditable({
             <b>type : </b>
             <Input
               name="type"
+              type="text"
               value={stateSelectedClass.type}
               onChange={cb_onChange}
               placeholder="(enter type)"
@@ -146,7 +160,7 @@ function CompClassDetailEditable({
 
           <ValidationText>{stateValidationText.type}</ValidationText>
           {/* -----------------date input------------------------------- */}
-          <Label>
+          {/* <Label>
             <b>date : </b>
             <Input
               type="date"
@@ -156,7 +170,7 @@ function CompClassDetailEditable({
               disabled={stateEditBoolean}
             />
           </Label>
-          <ValidationText>{stateValidationText.date}</ValidationText>
+          <ValidationText>{stateValidationText.date}</ValidationText> */}
           {/* -------------------startTime input---------------------------- */}
           <Label>
             <b>start time : </b>
@@ -189,18 +203,19 @@ function CompClassDetailEditable({
             <b>intensity level : </b>
             <Input
               type="text"
-              name="intensityLevel"
-              value={stateSelectedClass.intensityLevel}
+              name="intensity"
+              value={stateSelectedClass.intensity}
               onChange={cb_onChange}
-              placeholder="     <DIV_Right>
-              {stateSelectedClass ? (
-                <CompClassDetailEditable
-                  stateSelectedClass={stateSelectedClass}
-                  set_stateSelectedClass={set_stateSelectedClass}
-                  stateArrayOfClasses={stateArrayOfClasses}
-                  set_stateArrayOfClasses={set_stateArrayOfClasses}
-                />
-              ) : null}(enter intensity level )"
+              placeholder="(enter intensity level )"
+              //      <DIV_Right>
+              // {stateSelectedClass ? (
+              //   <CompClassDetailEditable
+              //     stateSelectedClass={stateSelectedClass}
+              //     set_stateSelectedClass={set_stateSelectedClass}
+              //     stateArrayOfClasses={stateArrayOfClasses}
+              //     set_stateArrayOfClasses={set_stateArrayOfClasses}
+              //   />
+              // ) : null}
               disabled={stateEditBoolean}
             />
           </Label>
@@ -223,13 +238,23 @@ function CompClassDetailEditable({
             <b>max class size : </b>
             <Input
               type="number"
-              name="maxClassSize"
-              value={stateSelectedClass.maxClassSize}
+              name="size"
+              value={stateSelectedClass.size}
               onChange={cb_onChange}
               placeholder="(enter a number )"
               disabled={stateEditBoolean}
             />
           </Label>
+          <Label>Instructor ID
+            <Input
+              type="number"
+              name="instructor_id"
+              value={stateSelectedClass.instructor_id}
+              onChange={cb_onChange}
+              placeholder="(instructor id)"
+              disabled={stateEditBoolean}
+            />
+          </Label>  
           <ValidationText>{stateValidationText.maxClassSize}</ValidationText>
           <Button disabled={!stateValidationBoolean} onClick={cb_onClick}>
             {stateEditBoolean ? "Edit" : "Update"}

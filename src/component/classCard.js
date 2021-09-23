@@ -24,8 +24,8 @@ function CompClassCard({ input_object, set_stateSelectedClass }) {
       <h3>CompClassCard.js</h3>
       {!input_object && <p>Loading</p>}
       {input_object && <p>class id: {input_object.class_id}</p>}
-      {input_object && <p>name: {input_object.name}</p>}
-      {input_object && <p>date: {input_object.date}</p>}
+      {input_object && <p>name: {input_object.class_name}</p>}
+      {/* {input_object && <p>date: {input_object.date}</p>} */}
       {input_object && <p>type: {input_object.type}</p>}
       {input_object && <p>location: {input_object.location}</p>}
       {input_object && <p>duration: {input_object.duration}</p>}
