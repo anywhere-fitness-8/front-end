@@ -9,6 +9,9 @@ import Page404 from "./page/page404";
 import { Switch, Route } from "react-router-dom";
 import PageRegister from "./page/pageRegistration";
 import PageOnboarding from "./page/pageOnboarding";
+import CompTaskManageClass from "./component/taskManageClass";
+import PrivateRoute from "./component/PrivateRoute";
+import CompTaskReserveClass from "./component/taskReserveClass";
 
 function App() {
   return (
@@ -27,12 +30,10 @@ function App() {
         <Route path="/profile">
           <PageProfile />
         </Route>
-        <Route path="/reserve">
-          <PageReserveClass />
-        </Route>
-        <Route path="/manage">
+        <PrivateRoute path="/reserve" component={CompTaskReserveClass}/>
+        <PrivateRoute path="/manage" component={CompTaskManageClass}/>
           <PageManageClass />
-        </Route>
+        
         <Route path='/onboarding'>
           <PageOnboarding />
         </Route>
