@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axiosWithAuth from '../utils/axiosWithAuth';
+import { date } from "yup/lib/locale";
 
 const Container = styled.div``;
 const Form = styled.form`
@@ -29,31 +31,40 @@ const Fieldset = styled.fieldset`
 
 function CompFormAddClass({ set_stateNewClass }) {
   const INITIAL_STATE = {
-    name: "",
+    class_name: "",
     type: "",
-    date: "",
-    startTime: "",
-    duration: "",
-    intensityLevel: "",
-    location: "",
-    registeredAttendees: 0,
-    maxClassSize: "",
+    instructor_id: null,
+    startTime: "6",
+    duration: 0,
+    intensity: 0,
+    location: "24 Hour Fitness",
+    registered_clients: 0,
+    size: 0,
   };
+
   const [stateReturnObject, set_stateReturnObject] = useState(null);
   const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateValidationBoolean, set_stateValidationBoolean] = useState(true);
   const [stateValidationText, set_stateValidationText] =
-    useState(INITIAL_STATE);
+  useState(INITIAL_STATE);
+  // const [stateNewClass, set_stateNewClass] = useState(null);
 
   const cb_onChange = (event) => {
     const { name, value } = event.target;
     set_stateFormData({ ...stateFormData, [name]: value });
   };
-
+ 
   const cb_onAdd = (event) => {
     event.preventDefault();
     //if validation pass
-    set_stateReturnObject({ ...stateFormData, class_id: Date.now() });
+    axiosWithAuth()
+      .post(`https://anywhere-fitness-8.herokuapp.com/api/classes`, stateFormData )
+      .then(res => {
+        console.log(res)
+        set_stateReturnObject(res.data)
+      })
+      .catch(err => console.log({ err }))
+      // set_stateReturnObject({ ...stateFormData, class_id: Date.now()});
   };
 
   useEffect(() => {
@@ -79,8 +90,8 @@ function CompFormAddClass({ set_stateNewClass }) {
             <b>Name : </b>
             <Input
               type="text"
-              name="name"
-              value={stateFormData.name}
+              name="class_name"
+              value={stateFormData.class_name}
               onChange={cb_onChange}
               placeholder="(enter class name)"
             />
@@ -100,20 +111,20 @@ function CompFormAddClass({ set_stateNewClass }) {
           <ValidationText>{stateValidationText.type}</ValidationText>
           {/* -----------------date input------------------------------- */}
           <Label>
-            <b>date : </b>
+            <b>instructor ID </b>
             <Input
-              type="date"
-              name="date"
-              value={stateFormData.date}
+              type="number"
+              name="instructor_id"
+              value={stateFormData.instructor_id}
               onChange={cb_onChange}
             />
           </Label>
-          <ValidationText>{stateValidationText.date}</ValidationText>
+          {/* <ValidationText>{stateValidationText.date}</ValidationText> */}
           {/* -------------------startTime input---------------------------- */}
           <Label>
             <b>start time : </b>
             <Input
-              type="time"
+              type="number"
               name="startTime"
               value={stateFormData.startTime}
               onChange={cb_onChange}
@@ -138,14 +149,14 @@ function CompFormAddClass({ set_stateNewClass }) {
           <Label>
             <b>intensity level : </b>
             <Input
-              type="text"
-              name="intensityLevel"
-              value={stateFormData.intensityLevel}
+              type="number"
+              name="intensity"
+              value={stateFormData.intensity}
               onChange={cb_onChange}
               placeholder="(enter intensity level )"
             />
           </Label>
-          <ValidationText>{stateValidationText.intensityLevel}</ValidationText>
+          <ValidationText>{stateValidationText.intensity}</ValidationText>
           {/* -----------------location input------------------------------- */}
           <Label>
             <b>location : </b>
@@ -163,8 +174,8 @@ function CompFormAddClass({ set_stateNewClass }) {
             <b>max class size : </b>
             <Input
               type="number"
-              name="maxClassSize"
-              value={stateFormData.maxClassSize}
+              name="size"
+              value={stateFormData.size}
               onChange={cb_onChange}
               placeholder="(enter a number )"
             />

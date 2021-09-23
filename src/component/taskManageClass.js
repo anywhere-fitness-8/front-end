@@ -7,6 +7,7 @@ import { list_of_classes } from "./sample_data";
 import CompClassCard from "./classCard";
 import CompClassDetailEditable from "./classDetailEditable";
 import  axiosWithAuth  from '../utils/axiosWithAuth'
+import axios from "axios";
 
 const Container = styled.div`
   height: 90%;
@@ -57,10 +58,15 @@ function CompTaskManageClass(props) {
     //replace below line with Axios
     //????????????????????????????????????????????????
     // _retrieve an array of classes per instructor
-    set_stateArrayOfClasses([...list_of_classes]);
+    axiosWithAuth()
+      .get(`https://anywhere-fitness-8.herokuapp.com/api/classes`)
+      .then(res => {
+        set_stateArrayOfClasses([...res.data]);
+        set_stateArrayOfRenderedClassCard([...list_of_classes]);
+      })
+
 
     //_render array of classes on the left of DIV_Flex_Row, DIV_Left
-    set_stateArrayOfRenderedClassCard([...stateArrayOfClasses]);
   }, []);
 
   //monitor change in stateArrayOfClasses
