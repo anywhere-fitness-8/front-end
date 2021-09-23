@@ -22,7 +22,6 @@ const RightImage = styled.img`
   width: 500px;
   height: 250px;
   float: right;
-  border-radius: 13px;
 `
 const MiddleRightImage = styled.img`
 
@@ -30,7 +29,6 @@ const MiddleRightImage = styled.img`
   width: 500px;
   height: 250px;
   float: left;
-  border-radius: 13px;
 `
 
 const Main = styled.main`
@@ -38,7 +36,6 @@ const Main = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   margin: auto;
   padding: 3vh 1vw;
 `;
@@ -53,24 +50,24 @@ function PageHome(props) {
         <h1>Welcome</h1>
         <Top>
           <div className="top-content">
-            <RightImage src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80" />
-          <h2>Yoga</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus est eros, rhoncus eget lacus nec, luctus pretium ligula. Ut ac metus nulla. Proin et elit et ligula tempus congue. Sed nisi metus, rutrum sit amet ex at, varius vestibulum urna. Phasellus malesuada ipsum vel augue faucibus, sed imperdiet tortor aliquet.</p>
+            <RightImage src="https://i.gyazo.com/318e7b2e62b9982ff058bce6a9fa6b4d.png" />
+          <h2>Sed nunc ligula</h2>
+          <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
           </div>
         </Top>
 
         <div className="middle-content">
-          <MiddleRightImage src="https://gracewaysports.com/wp-content/uploads/2014/11/ssportscentre_137-edit.jpg"/>
-          <h2>Tae Bo</h2>    
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus est eros, rhoncus eget lacus nec, luctus pretium ligula. Ut ac metus nulla. Proin et elit et ligula tempus congue. Sed nisi metus, rutrum sit amet ex at, varius vestibulum urna. Phasellus malesuada ipsum vel augue faucibus, sed imperdiet tortor aliquet.</p>
+          <MiddleRightImage src="https://i.gyazo.com/3ac43920dc12f20ffbf95418859d6a40.png"/>
+          <h2>Orci maecenas</h2>    
+          <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
         </div>
         <Top>
         <div className="bottom-content">
 
-          <RightImage src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F35%2F2017%2F08%2F03212132%2Fwide-jazzercise.jpg&q=85" />
+          <RightImage src="https://i.gyazo.com/4b35ad987e8866e19fa7d3c971ae8100.png" />
 
-          <h2>Jazzercise</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus est eros, rhoncus eget lacus nec, luctus pretium ligula. Ut ac metus nulla. Proin et elit et ligula tempus congue. Sed nisi metus, rutrum sit amet ex at, varius vestibulum urna. Phasellus malesuada ipsum vel augue faucibus, sed imperdiet tortor aliquet.</p>
+          <h2>Rhoncus magna</h2>
+          <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
 
         </div>
         </Top>
