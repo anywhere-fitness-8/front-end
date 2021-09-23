@@ -9,6 +9,10 @@ import Page404 from "./page/page404";
 import { Switch, Route } from "react-router-dom";
 import PageRegister from "./page/pageRegistration";
 import PageOnboarding from "./page/pageOnboarding";
+import CompTaskManageClass from "./component/taskManageClass";
+import PrivateRoute from "./component/PrivateRoute";
+import CompTaskReserveClass from "./component/taskReserveClass";
+import CompFormProfile from "./component/formProfile";
 
 function App() {
   return (
@@ -24,15 +28,9 @@ function App() {
           <PageLogIn />
         </Route>
         <Route path='/logout' component={Logout}></Route>
-        <Route path="/profile">
-          <PageProfile />
-        </Route>
-        <Route path="/reserve">
-          <PageReserveClass />
-        </Route>
-        <Route path="/manage">
-          <PageManageClass />
-        </Route>
+        <PrivateRoute path="/profile" component={CompFormProfile}/>
+        <PrivateRoute path="/reserve" component={CompTaskReserveClass}/>
+        <PrivateRoute path="/manage" component={CompTaskManageClass}/>        
         <Route path='/onboarding'>
           <PageOnboarding />
         </Route>
