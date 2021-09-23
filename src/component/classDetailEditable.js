@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { useParams } from "react-router-dom";
+
 
 const Container = styled.div``;
 const Form = styled.form`
@@ -49,14 +49,15 @@ function CompClassDetailEditable({
   };
 
   const [stateReturnObject, set_stateReturnObject] = useState({});
-  const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
+  // const [stateFormData, set_stateFormData] = useState(INITIAL_STATE);
   const [stateEditBoolean, set_stateEditBoolean] = useState(true);
-  const [stateValidationBoolean, set_stateValidationBoolean] = useState(true);
+  // const [stateValidationBoolean, set_stateValidationBoolean] = useState(true);
   const [stateValidationText, set_stateValidationText] =
     useState(INITIAL_STATE);
-
-  const { id } = useParams();
+    
+   
   
+
   const cb_onChange = (event) => {
      const { name, value } = event.target;
      set_stateSelectedClass({ ...stateSelectedClass, [name]: value });
@@ -64,20 +65,10 @@ function CompClassDetailEditable({
 
   };
 
-  // useEffect(() => {
-  //   axiosWithAuth()
-  //     .get(`https://anywhere-fitness-8.herokuapp.com/api/classes/`)
-  //     .then(res => {
-  //       set_stateSelectedClass(res.data)
-      
-        
-  //     })
-  // },[])
   const helper_update_ClassObject_via_axios = () => {
     axiosWithAuth()
-      .put(`https://anywhere-fitness-8.herokuapp.com/api/classes/${id}`, stateSelectedClass )
+      .put(`https://anywhere-fitness-8.herokuapp.com/api/classes/${stateSelectedClass.class_id}`, stateSelectedClass )
       .then(res => {
-        console.log(res)
         set_stateReturnObject(res.data)
       
       })
@@ -144,7 +135,7 @@ function CompClassDetailEditable({
               disabled={stateEditBoolean}
             />
           </Label>
-          <ValidationText>{stateValidationText.name}</ValidationText>
+          <ValidationText>{stateValidationText.class_name}</ValidationText>
           {/* -----------------type input------------------------------- */}
           <Label>
             <b>type : </b>
@@ -256,9 +247,10 @@ function CompClassDetailEditable({
             />
           </Label>  
           <ValidationText>{stateValidationText.maxClassSize}</ValidationText>
-          <Button disabled={!stateValidationBoolean} onClick={cb_onClick}>
+          <Button onClick={cb_onClick}>
             {stateEditBoolean ? "Edit" : "Update"}
           </Button>
+        <p>{stateReturnObject.message}</p>
         </Fieldset>
         {/* -------------------update button----------------------- */}
       </Form>
